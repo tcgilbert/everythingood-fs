@@ -16,13 +16,102 @@ model Restaurant {
     createdAt          DateTime @default(now())
     updatedAt          DateTime @updatedAt
     name               String
-    description        String
+    description        String   @db.Text
     price              String
-    idealGroupNumber   String
-    bestThingOnTheMenu String
+    idealGroupNumber   String   @db.VarChar(255)
+    bestThingOnTheMenu String   @db.Text
     idealMeal          String
-    alsoGreat          String
-    drinkOrder         String
-    note               String
-    link               String
+    alsoGreat          String   @db.Text
+    drinkOrder         String   @db.VarChar(255)
+    note               String   @db.Text
+    link               String   @db.VarChar(255)
+    guide              String
+
+    @@map("restaurants")
+}
+
+model Bar {
+    id               String   @id @default(cuid())
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+    name             String
+    description      String   @db.Text
+    price            String
+    idealGroupNumber String   @db.VarChar(255)
+    drinkSpecialty   String   @db.Text
+    food             String   @db.VarChar(255)
+    note             String   @db.Text
+    link             String   @db.VarChar(255)
+    guide            String
+
+    @@map("bars")
+}
+
+model BakeryAndDessert {
+    id                 String   @id @default(cuid())
+    createdAt          DateTime @default(now())
+    updatedAt          DateTime @updatedAt
+    name               String
+    roomToHang         String   @db.VarChar(255)
+    description        String   @db.Text
+    price              String
+    bestThingOnTheMenu String   @db.Text
+    alsoGreat          String   @db.Text
+    note               String   @db.Text
+    link               String   @db.VarChar(255)
+    guide              String
+
+    @@map("bakeries_and_desserts")
+}
+
+model Cafe {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    name        String
+    description String   @db.Text
+    coffeeBeans String   @db.VarChar(255)
+    roomToHang  String   @db.VarChar(255)
+    specialty   String   @db.VarChar(255)
+    bakedGoods  String   @db.VarChar(255)
+    note        String   @db.Text
+    link        String   @db.VarChar(255)
+    guide       String
+
+    @@map("cafes")
+}
+
+model GroceryAndLiquor {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    name        String
+    description String   @db.Text
+    link        String   @db.VarChar(255)
+    guide       String
+
+    @@map("groceries_and_liquor")
+}
+
+model ArtGallery {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    name      String
+    link      String   @db.VarChar(255)
+    guide     String
+
+    @@map("art_galleries")
+}
+
+model Shop {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    name        String
+    description String   @db.Text
+    link        String   @db.VarChar(255)
+    guide       String
+
+    @@map("shops")
 }
