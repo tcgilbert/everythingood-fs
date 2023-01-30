@@ -4,8 +4,6 @@ import Head from "next/head";
 import { api } from "../utils/api";
 
 const Les: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <div className="">

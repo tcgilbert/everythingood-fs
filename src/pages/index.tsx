@@ -4,7 +4,8 @@ import Head from "next/head";
 import { api } from "../utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const lesData = api.guide.fetch.useQuery({ guide: "les" });
+  console.log(lesData.data);
 
   return (
     <>
