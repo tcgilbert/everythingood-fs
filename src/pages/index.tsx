@@ -1,12 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import { api } from "../utils/api";
-
 const Home: NextPage = () => {
-  const lesData = api.guide.fetch.useQuery({ guide: "les" });
-  console.log(lesData.data);
-
   return (
     <>
       <Head>

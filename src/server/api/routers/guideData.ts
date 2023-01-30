@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const guideData = createTRPCRouter({
-  fetch: publicProcedure
+  getAll: publicProcedure
     .input(z.object({ guide: z.string() }))
     .query(async ({ ctx, input }) => {
       const { guide } = input;
