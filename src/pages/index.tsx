@@ -1,7 +1,19 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
+import { api } from "../utils/api";
+
 const Home: NextPage = () => {
+  const resData = api.guide.getAll.useQuery({ guide: "les" });
+
+  const showData = resData.data?.restaurants.map((restaurant) => {
+    return (
+      <div key={restaurant.id}>
+        <h1>{restaurant.name}</h1>
+      </div>
+    );
+  });
+
   return (
     <>
       <Head>
@@ -11,6 +23,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="">
         <h1 className="font-bol text-4xl">Everything Good</h1>
+        {showData}
       </main>
     </>
   );

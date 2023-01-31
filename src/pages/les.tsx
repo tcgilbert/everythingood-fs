@@ -4,59 +4,41 @@ import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import superjson from "superjson";
 import { appRouter } from "../server/api/root";
 import { createInnerTRPCContext } from "../server/api/trpc";
+import { api } from "../utils/api";
 
 export const getStaticProps = async () => {
-  if (prisma) {
-    const restaurants = await prisma.restaurant.findMany({
-      where: {
-        guide: "les",
-      },
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        guide: true,
-        idealGroupNumber: true,
-        bestThingOnTheMenu: true,
-        drinkOrder: true,
-        note: true,
-        price: true,
-        idealMeal: true,
-      },
-    });
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createInnerTRPCContext({}),
+    transformer: superjson,
+  });
 
-    return {
-      props: {
-        restaurants: restaurants,
-      },
-    };
-  }
+  await ssg.guide.getAll.prefetch({ guide: "les" });
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+  };
 };
 
 const Les: NextPage = (props) => {
-  console.log("props", props);
+  const resData = api.guide.getAll.useQuery({ guide: "les" });
+
+  const showData = resData.data?.restaurants.map((restaurant) => {
+    return (
+      <div key={restaurant.id}>
+        <h1>{restaurant.name}</h1>
+      </div>
+    );
+  });
 
   return (
     <>
       <div className="">This tha page</div>
+      {showData}
     </>
   );
 };
 
 export default Les;
-
-// export const getStaticProps = async () => {
-//   const ssg = createProxySSGHelpers({
-//     router: appRouter,
-//     ctx: createInnerTRPCContext({}),
-//     transformer: superjson,
-//   });
-
-//   const res = await ssg.guide.getAll.fetch({ guide: "les" });
-
-//   return {
-//     props: {
-//       restaurants: res.restaurants,
-//     },
-//   };
-// };
