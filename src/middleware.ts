@@ -3,7 +3,6 @@ import { verifyAuth } from "./lib/auth";
 
 export async function middleware(req: NextRequest) {
   const token = req.cookies.get("admin-token")?.value;
-  console.log("middlee");
 
   const verifiedToken =
     token &&
@@ -12,7 +11,6 @@ export async function middleware(req: NextRequest) {
     }));
 
   if (req.nextUrl.pathname.startsWith("/login") && !verifiedToken) {
-    console.log("hereree");
     return;
   }
 
@@ -23,7 +21,6 @@ export async function middleware(req: NextRequest) {
   if (!verifiedToken) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
-  console.log("middle ran");
 
   return NextResponse.next();
 }

@@ -1,10 +1,16 @@
 import { type NextPage } from "next";
+import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 
 import { api } from "../utils/api";
 
 const Login: NextPage = () => {
-  const { mutate, isError } = api.admin.login.useMutation();
+  const router = useRouter();
+  const { mutate, isError } = api.admin.login.useMutation({
+    onSuccess: () => {
+      router.push("/admin");
+    },
+  });
 
   const [input, setInput] = useState({
     username: "",
