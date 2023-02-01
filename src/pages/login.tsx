@@ -1,7 +1,11 @@
 import { type NextPage } from "next";
 import { ChangeEvent, useState } from "react";
 
+import { api } from "../utils/api";
+
 const Login: NextPage = () => {
+  const { mutate, isError } = api.admin.login.useMutation();
+
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -19,6 +23,7 @@ const Login: NextPage = () => {
         className="flex flex-col bg-gray-600
       p-9"
       >
+        {isError && <p className="text4xl text-red-600">Invalid credentials</p>}
         <label htmlFor="username">Username:</label>
         <input
           name="username"
@@ -29,13 +34,14 @@ const Login: NextPage = () => {
         <label htmlFor="password">Password:</label>
         <input
           name="password"
-          type="text"
+          type="password"
           value={input.password}
           onChange={handleChange}
         />
         <button
           type="submit"
           className="mt-7 border-2 border-red-100 bg-green-400"
+          onClick={() => mutate(input)}
         >
           Login
         </button>
