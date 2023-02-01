@@ -20,7 +20,10 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
 import { prisma } from "../db";
 
-type CreateContextOptions = Record<string, never>;
+type CreateContextOptions = {
+  req: NextApiRequest;
+  res: NextApiResponse;
+};
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -32,8 +35,11 @@ type CreateContextOptions = Record<string, never>;
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
 export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+  const { req, res } = _opts;
   return {
     prisma,
+    req,
+    res,
   };
 };
 
@@ -43,7 +49,11 @@ export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = (_opts: CreateNextContextOptions) => {
-  return createInnerTRPCContext({});
+  const { req, res } = _opts;
+  return createInnerTRPCContext({
+    req,
+    res,
+  });
 };
 
 /**
@@ -54,6 +64,7 @@ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
  */
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
