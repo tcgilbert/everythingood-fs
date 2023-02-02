@@ -9,6 +9,7 @@ import {
 } from "@prisma/client";
 
 import { RestaurantComponent } from "../components/Restaurant";
+import { BarComponent } from "../components/Bar";
 
 interface Props {
   displayed: string;
@@ -44,7 +45,7 @@ export const GuideContent = (props: Props) => {
         });
       case "bars":
         return bars.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return <BarComponent key={ele.id} bar={ele} />;
         });
       case "cafes":
         return cafes.map((ele) => {
