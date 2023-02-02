@@ -22,12 +22,12 @@ const Login: NextPage = () => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
-
+  ("");
   return (
     <>
       <div
-        className="flex flex-col bg-gray-600
-      p-9"
+        className="mx-auto flex h-screen max-w-4xl flex-col border-l border-r border-r-gray-200 bg-gray-600 p-9
+      px-4"
       >
         {isError && <p className="text4xl text-red-600">Invalid credentials</p>}
         <label htmlFor="username">Username:</label>
