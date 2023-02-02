@@ -1,30 +1,14 @@
 import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import LowerEastSideMap from "../public/les-map.jpg";
-import { getStaticGuideData } from "../server/queries/guideData";
+import { useState } from "react";
 
-export const getStaticProps = async () => {
-  const data = await getStaticGuideData("les");
+// components
+import { GuideNav } from "../components/GuideNav";
+import { GuideContent } from "../components/GuideContent";
 
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {
-    artGalleries,
-    restaurants,
-    cafes,
-    bakeriesAndDesserts,
-    bars,
-    groceriesAndLiquor,
-    shops,
-  } = data;
-
-  console.log(restaurants);
+const Les = () => {
+  const [displayed, setDisplayed] = useState("restaurants");
 
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -152,6 +136,8 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
       </div>
       <div className="my-5" />
+      <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
+      <div className="my-10" />
     </div>
   );
 };
