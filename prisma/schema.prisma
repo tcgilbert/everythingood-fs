@@ -13,8 +13,8 @@ datasource db {
 
 model Restaurant {
     id                 String   @id @default(cuid())
-    createdAt          DateTime @default(now())
-    updatedAt          DateTime @updatedAt
+    createdAt          DateTime @default(now()) @ignore
+    updatedAt          DateTime @updatedAt @ignore
     name               String
     description        String   @db.Text
     price              String
@@ -32,8 +32,8 @@ model Restaurant {
 
 model Bar {
     id               String   @id @default(cuid())
-    createdAt        DateTime @default(now())
-    updatedAt        DateTime @updatedAt
+    createdAt        DateTime @default(now()) @ignore
+    updatedAt        DateTime @updatedAt @ignore
     name             String
     description      String   @db.Text
     price            String
@@ -49,8 +49,8 @@ model Bar {
 
 model BakeryAndDessert {
     id                 String   @id @default(cuid())
-    createdAt          DateTime @default(now())
-    updatedAt          DateTime @updatedAt
+    createdAt          DateTime @default(now()) @ignore
+    updatedAt          DateTime @updatedAt @ignore
     name               String
     roomToHang         String   @db.VarChar(255)
     description        String   @db.Text
@@ -66,8 +66,8 @@ model BakeryAndDessert {
 
 model Cafe {
     id          String   @id @default(cuid())
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt   DateTime @default(now()) @ignore
+    updatedAt   DateTime @updatedAt @ignore
     name        String
     description String   @db.Text
     coffeeBeans String   @db.VarChar(255)
@@ -83,8 +83,8 @@ model Cafe {
 
 model GroceryAndLiquor {
     id          String   @id @default(cuid())
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt   DateTime @default(now()) @ignore
+    updatedAt   DateTime @updatedAt @ignore
     name        String
     description String   @db.Text
     link        String   @db.VarChar(255)
@@ -95,8 +95,8 @@ model GroceryAndLiquor {
 
 model ArtGallery {
     id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt DateTime @default(now()) @ignore
+    updatedAt DateTime @updatedAt @ignore
     name      String
     link      String   @db.VarChar(255)
     guide     String
@@ -106,8 +106,8 @@ model ArtGallery {
 
 model Shop {
     id          String   @id @default(cuid())
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt   DateTime @default(now()) @ignore
+    updatedAt   DateTime @updatedAt @ignore
     name        String
     description String   @db.Text
     link        String   @db.VarChar(255)

@@ -30,7 +30,7 @@ export const GuideNav = (props: Props) => {
           <option value="restaurants">Restaurants</option>
           <option value="bars">Bars</option>
           <option value="cafes">Cafes</option>
-          <option value="bakeriesdessert">Bakeries and Dessert</option>
+          <option value="bakeriesAndDesserts">Bakeries and Dessert</option>
           <option value="shops">Shops</option>
           <option value="groceriesandliquor">Grocery and Liquor</option>
           <option value="artgalleries">Art Galleries</option>
@@ -58,8 +58,8 @@ export const GuideNav = (props: Props) => {
               Cafes
             </p>
             <p
-              className={handleClass("bakeriesdessert")}
-              onClick={() => props.setDisplayed("bakeriesdessert")}
+              className={handleClass("bakeriesAndDesserts")}
+              onClick={() => props.setDisplayed("bakeriesAndDesserts")}
             >
               Bakeries and Dessert
             </p>
@@ -70,14 +70,14 @@ export const GuideNav = (props: Props) => {
               Shops
             </p>
             <p
-              className={handleClass("groceriesandliquor")}
-              onClick={() => props.setDisplayed("groceriesandliquor")}
+              className={handleClass("groceriesAndLiquor")}
+              onClick={() => props.setDisplayed("groceriesAndLiquor")}
             >
               Grocery and Liquor
             </p>
             <p
-              className={handleClass("artgalleries")}
-              onClick={() => props.setDisplayed("artgalleries")}
+              className={handleClass("artGalleries")}
+              onClick={() => props.setDisplayed("artGalleries")}
             >
               Art Galleries
             </p>
