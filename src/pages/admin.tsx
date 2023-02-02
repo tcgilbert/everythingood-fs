@@ -3,7 +3,7 @@ import { type NextPage } from "next";
 const Admin: NextPage = () => {
   return (
     <>
-      <div className="mx-auto h-screen max-w-4xl border-l border-r border-r-gray-200 px-4">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         Admin Should Only See this
       </div>
     </>

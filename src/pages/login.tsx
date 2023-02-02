@@ -25,10 +25,7 @@ const Login: NextPage = () => {
   ("");
   return (
     <>
-      <div
-        className="mx-auto flex h-screen max-w-4xl flex-col border-l border-r border-r-gray-200 bg-gray-600 p-9
-      px-4"
-      >
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         {isError && <p className="text4xl text-red-600">Invalid credentials</p>}
         <label htmlFor="username">Username:</label>
         <input
