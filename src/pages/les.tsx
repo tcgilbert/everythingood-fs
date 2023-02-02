@@ -25,7 +25,7 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
       {/* intro */}
       <div className="py-3" />
-      <div className="overflow-hidden rounded-lg bg-gray-100 shadow">
+      <div className="overflow-hidden rounded-t-lg bg-white shadow">
         <h1 className="pt-5 text-center font-eb text-6xl font-bold">
           Everything Good
         </h1>
@@ -146,9 +146,8 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </p>
         </div>
       </div>
-      <div className="my-5" />
       <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
-      <div className="my-10" />
+      <div className="my-3" />
       <GuideContent displayed={displayed} data={data} />
     </div>
   );

@@ -37,7 +37,7 @@ export const GuideNav = (props: Props) => {
         </select>
       </div>
       <div className="hidden sm:block">
-        <div className="border-b border-gray-400 bg-white">
+        <div className="border-b border-t border-gray-400 bg-white">
           <nav className="-mb-px flex" aria-label="Tabs">
             <p
               className={handleClass("restaurants")}

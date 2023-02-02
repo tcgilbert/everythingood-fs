@@ -8,6 +8,8 @@ import {
   Shop,
 } from "@prisma/client";
 
+import { RestaurantComponent } from "../components/Restaurant";
+
 interface Props {
   displayed: string;
   data: {
@@ -38,7 +40,7 @@ export const GuideContent = (props: Props) => {
     switch (props.displayed) {
       case "restaurants":
         return restaurants.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return <RestaurantComponent key={ele.id} restaurant={ele} />;
         });
       case "bars":
         return bars.map((ele) => {
@@ -69,5 +71,5 @@ export const GuideContent = (props: Props) => {
     }
   };
 
-  return <div className="">{handleContent()}</div>;
+  return <div className="grid-cols-2 gap-2 lg:grid">{handleContent()}</div>;
 };
