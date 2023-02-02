@@ -4,11 +4,11 @@ import { type NextPage } from "next";
 export const Subscribe: NextPage = () => {
   const [email, setEmail] = useState("");
   return (
-    <div className="rounded-lg bg-gray-800">
-      <div className="mx-auto max-w-7xl py-8 px-6 lg:flex lg:items-center lg:py-16 lg:px-8">
+    <div className="rounded-lg bg-gray-600">
+      <div className="mx-auto max-w-7xl py-6 px-6 lg:flex lg:items-center lg:py-7 lg:px-8">
         <div className="lg:w-0 lg:flex-1">
           <h2
-            className="font-inter text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="font-robo text-3xl font-bold tracking-tight text-white sm:text-4xl"
             id="newsletter-headline"
           >
             Sign up for our newsletter

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
           Everything Good
         </h1>
         <p className="mt-4 text-center font-robo text-2xl font-bold">
-          Guides to everything good in the city
+          guides to everything good in the city
         </p>
         <div className="p-3" />
         <p className="text-center font-inter">
