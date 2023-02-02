@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { Subscribe } from "../components/Subscribe";
 
 const Home: NextPage = () => {
   return (
@@ -11,14 +12,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="mx-auto h-screen max-w-4xl border-l border-r border-r-gray-200 px-4">
-        <h1 className="pt-5 text-center font-sans text-7xl font-medium md:text-8xl">
+        <h1 className="pt-5 text-center font-eb text-7xl font-medium md:text-8xl">
           Everything Good
         </h1>
-        <p className="mt-4 text-center font-serif text-2xl font-bold">
+        <p className="mt-4 text-center font-robo text-2xl font-bold">
           Guides to everything good in the city
         </p>
         <div className="p-3" />
-        <p className="text-center">
+        <p className="text-center font-inter">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit laborum
           commodi architecto labore aliquam, dolorem quaerat ab a exercitationem
           eaque odio. A rem magni inventore error quia aut sunt itaque! Lorem
@@ -29,25 +30,27 @@ const Home: NextPage = () => {
         </p>
         <div className="p-3" />
         <div className="m-2 flex flex-col rounded border bg-gray-200 py-3 px-3 shadow-lg">
-          <h2 className="stracking-wider pb-2 text-2xl text-gray-800">
+          <h2 className="stracking-wider pb-2 font-inter text-2xl text-gray-800">
             Guides:
           </h2>
-          <Link className="font-serif font-bold hover:text-red-600" href="/les">
+          <Link className="font-robo font-bold hover:text-red-600" href="/les">
             - on the Lower East Side
           </Link>
           <Link
-            className="font-serif font-bold hover:text-red-600"
+            className="font-robo font-bold hover:text-red-600"
             href="/soho-noho"
           >
             - in Soho and Noho
           </Link>
           <Link
-            className="font-serif font-bold hover:text-red-600"
+            className="font-robo font-bold hover:text-red-600"
             href="/nolita-chinatown-littleitaly"
           >
             - in Nolita, Chinatown, and Little Italy
           </Link>
         </div>
+        <div className="p-3" />
+        <Subscribe />
       </div>
     </>
   );

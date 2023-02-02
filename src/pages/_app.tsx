@@ -1,5 +1,5 @@
 import { type AppType } from "next/app";
-import { EB_Garamond, Roboto_Mono } from "@next/font/google";
+import { EB_Garamond, Roboto_Mono, Inter } from "@next/font/google";
 
 import { api } from "../utils/api";
 
@@ -13,11 +13,18 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <main className={`${ebGaramond.variable} ${robotoMono.variable}`}>
+    <main
+      className={`${ebGaramond.variable} ${robotoMono.variable} ${inter.variable}`}
+    >
       <Component {...pageProps} />
     </main>
   );

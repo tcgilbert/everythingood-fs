@@ -6,10 +6,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-eb-garamond)", fontFamily.sans],
-        serif: ["var(--font-roboto-mono)", fontFamily.sans],
+        inter: ["var(--font-inter)", fontFamily.sans],
+        eb: ["var(--font-eb-garamond)", fontFamily.sans],
+        robo: ["var(--font-roboto-mono)", fontFamily.sans],
       },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
   },
 };
