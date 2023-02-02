@@ -1,6 +1,7 @@
-import { InferGetStaticPropsType } from "next";
+import { type NextPage } from "next";
 import Image from "next/image";
 import LowerEastSideMap from "../public/les-map.jpg";
+
 import { getStaticGuideData } from "../server/queries/guideData";
 
 export const getStaticProps = async () => {
@@ -13,19 +14,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {
-    artGalleries,
-    restaurants,
-    cafes,
-    bakeriesAndDesserts,
-    bars,
-    groceriesAndLiquor,
-    shops,
-  } = data;
-
-  console.log(restaurants);
-
+const SohoNoho: NextPage = (props) => {
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
       {/* intro */}
@@ -106,7 +95,12 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               — Alex Delany
             </a>
           </p>
-          <div className="py-3" />
+        </div>
+      </div>
+      <div className="my-5" />
+      <div className="overflow-hidden rounded-lg bg-gray-100 shadow">
+        <div className="px-4 py-5 sm:p-6">
+          {" "}
           <div className="mx-auto max-w-3xl">
             <Image
               src={LowerEastSideMap}
@@ -151,9 +145,8 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </p>
         </div>
       </div>
-      <div className="my-5" />
     </div>
   );
 };
 
-export default Les;
+export default SohoNoho;
