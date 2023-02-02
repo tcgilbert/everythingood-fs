@@ -14,9 +14,33 @@ const Home: NextPage = () => {
         <h1 className="pt-5 text-center font-sans text-7xl font-medium md:text-8xl">
           Everything Good
         </h1>
+        <div className="p-3" />
+        <p className="text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit laborum
+          commodi architecto labore aliquam, dolorem quaerat ab a exercitationem
+          eaque odio. A rem magni inventore error quia aut sunt itaque! Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Aperiam repudiandae
+          incidunt minima similique alias possimus corporis earum dolor laborum,
+          quo eligendi, rem maiores eveniet. A, ipsa! Nostrum fugit repudiandae
+          sequi?
+        </p>
         <div className="my-8" />
-        <div className="border-t border-b border-t-gray-500 border-b-gray-500 py-3">
-          <Link href="/les">on the Lower East Side</Link>
+        <div className="flex flex-col border-t border-b border-t-gray-500 border-b-gray-500 py-3 px-3">
+          <h2 className="stracking-wider font-serif text-2xl font-bold">
+            GUIDES:
+          </h2>
+          <Link className="font-serif font-bold" href="/les">
+            on the Lower East Side
+          </Link>
+          <Link className="font-serif font-bold" href="/soho-noho">
+            in Soho and Noho
+          </Link>
+          <Link
+            className="font-serif font-bold"
+            href="/nolita-chinatown-littleitaly"
+          >
+            in Nolita, Chinatown, and Little Italy
+          </Link>
         </div>
       </div>
     </>

@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const { fontFamily } = require('tailwindcss/defaultTheme')
-
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -8,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-eb-garamond)", fontFamily.sans],
+        serif: ["var(--font-roboto-mono)", fontFamily.sans],
       },
     },
     plugins: [],
