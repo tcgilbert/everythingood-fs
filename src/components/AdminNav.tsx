@@ -27,27 +27,38 @@ export const AdminNav = (props: Props) => {
 
   return (
     <div>
-      <div className="ml-2">
-        <nav className="flex w-1/2">
-          <p
-            className={handleClass("les")}
-            onClick={() => props.setGuide("les")}
+      <div className="ml-2 flex w-3/4">
+        <p className={handleClass("les")} onClick={() => props.setGuide("les")}>
+          on the Lower East Side
+        </p>
+        <p
+          className={handleClass("soho-noho")}
+          onClick={() => props.setGuide("soho-noho")}
+        >
+          in Soho and Noho
+        </p>
+        <p
+          className={handleClass("nolita-chinatown-little-italy")}
+          onClick={() => props.setGuide("nolita-chinatown-little-italy")}
+        >
+          in Nolita, Chinatown, and Little Italy
+        </p>
+        <div className="ml-2">
+          <select
+            id="location"
+            name="location"
+            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            defaultValue="Restaurants"
           >
-            on the Lower East Side
-          </p>
-          <p
-            className={handleClass("soho-noho")}
-            onClick={() => props.setGuide("soho-noho")}
-          >
-            in Soho and Noho
-          </p>
-          <p
-            className={handleClass("nolita-chinatown-little-italy")}
-            onClick={() => props.setGuide("nolita-chinatown-little-italy")}
-          >
-            in Nolita, Chinatown, and Little Italy
-          </p>
-        </nav>
+            <option>Restaurants</option>
+            <option>Bars</option>
+            <option>Cafes</option>
+            <option>Bakeries and Dessert</option>
+            <option>Grocery and Liquor</option>
+            <option>Shops</option>
+            <option>Art Galleries</option>
+          </select>
+        </div>
       </div>
     </div>
   );
