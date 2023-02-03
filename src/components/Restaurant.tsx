@@ -46,13 +46,13 @@ export const RestaurantComponent = (props: Props) => {
       <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
         <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
+            <dt className="text-sm font-medium text-red-500">About</dt>
             <dd className="mt-1 font-eb text-lg text-gray-900">
               {description}
             </dd>
           </div>
           <div className="sm:col-span-1">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-sm font-medium text-red-500">
               Best thing on the menu
             </dt>
             <dd className="mt-1 font-eb text-lg text-gray-900">
@@ -60,15 +60,15 @@ export const RestaurantComponent = (props: Props) => {
             </dd>
           </div>
           <div className="sm:col-span-1">
-            <dt className="text-sm font-medium text-gray-500">Also Great</dt>
+            <dt className="text-sm font-medium text-red-500">Also Great</dt>
             <dd className="mt-1 font-eb text-lg text-gray-900">{alsoGreat}</dd>
           </div>
           <div className="sm:col-span-1">
-            <dt className="text-sm font-medium text-gray-500">Drink Order</dt>
+            <dt className="text-sm font-medium text-red-500">Drink Order</dt>
             <dd className="mt-1 font-eb text-lg text-gray-900">{drinkOrder}</dd>
           </div>
           <div className="sm:col-span-1">
-            <dt className="text-sm font-medium text-gray-500">Note</dt>
+            <dt className="text-sm font-medium text-red-500">Note</dt>
             <dd className="mt-1 font-eb text-lg text-gray-900">{note}</dd>
           </div>
         </dl>

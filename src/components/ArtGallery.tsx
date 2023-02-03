@@ -1,5 +1,4 @@
 import { ArtGallery } from "@prisma/client";
-import { BiMap } from "react-icons/bi";
 
 interface Props {
   artGalleries: ArtGallery[];
