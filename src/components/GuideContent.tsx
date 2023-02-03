@@ -40,7 +40,9 @@ export const GuideContent = (props: Props) => {
     groceriesAndLiquor,
   } = props.data;
 
-  console.log(artGalleries);
+  if (props.displayed === "artGalleries") {
+    return <ArtGalleryComponent artGalleries={artGalleries} />;
+  }
 
   const handleContent = () => {
     switch (props.displayed) {
@@ -59,10 +61,6 @@ export const GuideContent = (props: Props) => {
       case "shops":
         return shops.map((ele) => {
           return <ShopComponent key={ele.id} shop={ele} />;
-        });
-      case "artGalleries":
-        return artGalleries.map((ele) => {
-          return <ArtGalleryComponent key={ele.id} artGallery={ele} />;
         });
       case "bakeriesAndDesserts":
         return bakeriesAndDesserts.map((ele) => {
