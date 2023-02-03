@@ -1,9 +1,14 @@
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { RiAdminLine } from "react-icons/ri";
 import { api } from "../utils/api";
+import { AdminNav } from "../components/AdminNav";
 
 const Admin: NextPage = () => {
+  const [guide, setGuide] = useState("les");
+  const [displayed, setDisplayed] = useState("restaurants");
+
   const router = useRouter();
   const { mutate: logout, isError } = api.admin.logout.useMutation({
     onSuccess: () => {
@@ -25,7 +30,14 @@ const Admin: NextPage = () => {
           Logout
         </button>
       </div>
-      <div></div>
+      <div>
+        <AdminNav
+          guide={guide}
+          displayed={displayed}
+          setDisplayed={setDisplayed}
+          setGuide={setGuide}
+        />
+      </div>
     </>
   );
 };
