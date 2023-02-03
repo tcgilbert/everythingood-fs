@@ -1,14 +1,15 @@
-import { InferGetStaticPropsType, type NextPage } from "next";
+import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
+import NolitaChinatownLittleItalyMap from "../public/ct-nl-li-map.jpg";
 import { useState } from "react";
-import { GuideContent } from "../components/GuideContent";
-import { GuideNav } from "../components/GuideNav";
-import SohoNohoMap from "../public/sohonoho-map.jpg";
-
 import { getStaticGuideData } from "../server/queries/guideData";
 
+// components
+import { GuideNav } from "../components/GuideNav";
+import { GuideContent } from "../components/GuideContent";
+
 export const getStaticProps = async () => {
-  const data = await getStaticGuideData("soho-noho");
+  const data = await getStaticGuideData("nolita-chinatown-littleitaly");
 
   return {
     props: {
@@ -17,26 +18,29 @@ export const getStaticProps = async () => {
   };
 };
 
-const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const NolitaChinatownLittleItaly = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [displayed, setDisplayed] = useState("restaurants");
+
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
       {/* intro */}
       <div className="py-3" />
-      <div className="overflow-hidden rounded-lg bg-gray-100 shadow">
+      <div className="overflow-hidden rounded-t-lg bg-white shadow">
         <h1 className="pt-5 text-center font-eb text-6xl font-bold">
           Everything Good
         </h1>
         <p className="mt-3 text-center font-robo text-2xl font-bold">
-          in Soho and NoHo
+          in Nolita, Chinatown, and Little Italy
         </p>
         <div className="px-4 py-5 sm:p-6">
           <p className="text-center font-eb text-lg">
             <span className="font-eb text-red-500">Don’t worry. </span>
-            This is not a list of the best spots to get street-styled or a
-            manual for bribing the Balthazar maître d’ or best practices for
-            securing NikeLab releases or a map of where the Jenners and Hadids
-            have apartments.{" "}
+            This is not a list of tips to style your Aimé Leon Dore Yankees cap
+            or a guide telling you to go to Lombardi’s Pizza or a love letter to
+            the San Gennaro Festival or a map of the best brick walls to film
+            Tiktok outfit videos in front of.
             <span className="font-eb text-red-500">
               It’s (hopefully) not eye roll material.
             </span>
@@ -48,25 +52,22 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </span>
             They are complete, single-source dockets meant to give you 360
             degree recommendations that span the entirety of a neighborhood, and
-            this is quite literally a guide to everything good in the
-            fashionable, see-and-be-seen, sometimes crowded, oftentimes
-            insufferable neighborhoods of SoHo and NoHo. It Includes everything
-            from art galleries to bakeries to coffee shops to clothing boutiques
-            to bars and restaurants. And while there’s a lot of noise in these
-            two neighborhoods, they are also home to some of the best food and
-            shopping in all of NYC.
+            this is quite literally a guide to everything good in Nolita, Little
+            Italy, and Chinatown. It includes everything from art galleries to
+            bakeries to coffee shops to clothing boutiques to bars and
+            restaurants.
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
-            Anyway, this is the second installment of Everything Good.
+            This is the third installment of Everything Good.
             <span className="font-eb text-red-500">
-              You can find the first guide to the LES right here. There will be
-              many more.
+              {" "}
+              There will be many more.{" "}
             </span>
             I’m the only person writing and gathering these recommendations, so
             if you do not see a spot (well-known or not) on this list, it might
-            be because I don’t know it. But most likely, it’s because I don’t
-            really like it.
+            be because I don’t know it. But it could also be that I don’t really
+            like it.
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
@@ -89,18 +90,19 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               className="text-red-600"
               href="https://give.glwd.org/give/244921/?&_ga=2.82856336.720855393.1659365992-1819495194.1658185824&_gac=1.152424907.1659365992.Cj0KCQjw852XBhC6ARIsAJsFPN2ROn8IwnasS4uPZ7g5p2G1i2Dm1jOOEHF6rAXr9556xlUoF4Cy8aMaAjprEALw_wcB#!/donation/checkout?c_src=WS&c_src2=BU"
             >
-              God’s Love We Deliver
+              Welcome to Chinatown
             </a>
-            , an amazing secular charity in SoHo that provides nutritious meals
-            for New Yorkers that are too sick or elderly to cook for themselves.
-            They’ve done fantastic work in NYC since 1985 and have been at home
-            in SoHo since 2015. If you’re using this list, please donate!
+            , an amazing nonprofit helping preserve businesses and aid residents
+            in Manhattan’s Chinatown. They do fantastic work keeping the
+            incredibly important culture of Manhattan’s Chinatown thriving
+            through education, business grants, programming, and meals for
+            residents in need. They rule!
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
             I hope you find this list useful. It might not be. Either way, share
             it with your friends, donate, support these businesses, and have an
-            excellent day in SoHo and NoHo. Cheers!
+            excellent day in Nolita, Chinatown, and Little Italy. Cheers!
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
@@ -115,19 +117,23 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className="py-3" />
           <div className="mx-auto max-w-3xl">
             <Image
-              src={SohoNohoMap}
+              src={NolitaChinatownLittleItalyMap}
               priority={true}
-              alt="Map of the Soho and Noho"
+              alt="Map of the Lower East Side"
               className="shadow-lg"
             />
           </div>
           <div className="py-3" />
-
           <p className="text-center font-eb text-lg">
-            OK, OK, OK. First off, when I say NoHo and SoHo, I mean the space
-            outlined in black above, including Hudson Square. I’m not saying you
-            didn't know where these neighborhoods are. But now we definitely
-            100% all know where they are.
+            OK. You might be like, why the fuck did he put these three
+            neighborhoods in one guide?!?! Well, listen up, buddy! It’s because
+            they’re small and they stack up perfectly on top of each other to
+            form one normal-sized neighborhood. I’m talking about the space
+            marked on the map above, bound by Houston St. on the North, Bowery
+            on the East, Worth St. on the South, and Lafayette St. on the West.
+            We should also note that Chinatown spreads into Tribeca and the
+            Lower East Side, so the Chinatown spots on this guide only include
+            those not in the other two neighborhoods.
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
@@ -143,7 +149,7 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </a>
             , so you can have it handy whenever you’re running around living
             your life. It also includes the spots from previous Everything Good
-            Guides on separate layers.
+            guides on separate layers.
           </p>
           <div className="py-3" />
           <p className="text-center font-eb text-lg">
@@ -166,4 +172,4 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export default SohoNoho;
+export default NolitaChinatownLittleItaly;
