@@ -44,4 +44,16 @@ export const adminRouter = createTRPCRouter({
         message: "Invalid username or password",
       });
     }),
+  logout: publicProcedure.mutation(async ({ ctx }) => {
+    console.log("logout_________________");
+
+    const { res } = ctx;
+
+    res.setHeader(
+      "Set-Cookie",
+      "admin-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+    );
+
+    return { success: true };
+  }),
 });
