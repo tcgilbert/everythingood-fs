@@ -1,25 +1,23 @@
-import { Restaurant } from "@prisma/client";
+import { BakeryAndDessert } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
-  restaurant: Restaurant;
+  bakeryAndDessert: BakeryAndDessert;
 }
 
-export const RestaurantComponent = (props: Props) => {
-  const { restaurant } = props;
+export const BakeryAndDessertComponent = (props: Props) => {
+  const { bakeryAndDessert } = props;
   const {
     name,
-    alsoGreat,
-    bestThingOnTheMenu,
     description,
-    drinkOrder,
     guide,
-    idealGroupNumber,
-    idealMeal,
     link,
     note,
+    alsoGreat,
+    bestThingOnTheMenu,
     price,
-  } = restaurant;
+    roomToHang,
+  } = bakeryAndDessert;
 
   return (
     <div className="col-span-1 mb-2 overflow-hidden bg-white shadow sm:rounded-lg">
@@ -35,12 +33,6 @@ export const RestaurantComponent = (props: Props) => {
         <div className="py-1" />
         <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800">
           {price}
-        </span>
-        <span className="mx-1 inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800">
-          {idealGroupNumber} people
-        </span>
-        <span className="mx-1 inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800">
-          {idealMeal}
         </span>
       </div>
       <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
@@ -64,8 +56,8 @@ export const RestaurantComponent = (props: Props) => {
             <dd className="mt-1 font-eb text-lg text-gray-900">{alsoGreat}</dd>
           </div>
           <div className="sm:col-span-1">
-            <dt className="text-sm font-medium text-gray-500">Drink Order</dt>
-            <dd className="mt-1 font-eb text-lg text-gray-900">{drinkOrder}</dd>
+            <dt className="text-sm font-medium text-gray-500">Room to Hang</dt>
+            <dd className="mt-1 font-eb text-lg text-gray-900">{roomToHang}</dd>
           </div>
           <div className="sm:col-span-1">
             <dt className="text-sm font-medium text-gray-500">Note</dt>

@@ -1,4 +1,5 @@
 import { Bar } from "@prisma/client";
+import { BiMap } from "react-icons/bi";
 
 interface Props {
   bar: Bar;
@@ -21,9 +22,14 @@ export const BarComponent = (props: Props) => {
   return (
     <div className="col-span-1 mb-2 overflow-hidden bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
-        <h3 className="font-robo text-2xl font-medium leading-6 text-gray-900">
-          {name}
-        </h3>
+        <div className="flex justify-between">
+          <h3 className="font-robo text-2xl font-medium leading-6 text-gray-900">
+            {name}
+          </h3>
+          <a href="" className="text-2xl">
+            <BiMap className="hover:text-red-600" />
+          </a>
+        </div>
         <div className="py-1" />
         <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800">
           {price}

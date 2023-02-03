@@ -11,6 +11,10 @@ import {
 import { RestaurantComponent } from "../components/Restaurant";
 import { BarComponent } from "../components/Bar";
 import { CafeComponent } from "../components/Cafe";
+import { BakeryAndDessertComponent } from "../components/BakeryAndDessert";
+import { ShopComponent } from "../components/Shop";
+import { GroceryAndLiquorComponent } from "../components/GroceryAndLiquor";
+import { ArtGalleryComponent } from "../components/ArtGallery";
 
 interface Props {
   displayed: string;
@@ -54,19 +58,23 @@ export const GuideContent = (props: Props) => {
         });
       case "shops":
         return shops.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return <ShopComponent key={ele.id} shop={ele} />;
         });
       case "artGalleries":
         return artGalleries.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return <ArtGalleryComponent key={ele.id} artGallery={ele} />;
         });
       case "bakeriesAndDesserts":
         return bakeriesAndDesserts.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return (
+            <BakeryAndDessertComponent key={ele.id} bakeryAndDessert={ele} />
+          );
         });
       case "groceriesAndLiquor":
         return groceriesAndLiquor.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return (
+            <GroceryAndLiquorComponent key={ele.id} groceryAndLiquor={ele} />
+          );
         });
       default:
         return null;
