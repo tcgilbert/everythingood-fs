@@ -4,10 +4,13 @@ import { useState } from "react";
 import { RiAdminLine } from "react-icons/ri";
 import { api } from "../utils/api";
 import { AdminNav } from "../components/AdminNav";
+import { Divider } from "../components/Divider";
+import { AdminContent } from "../components/AdminContent";
 
 const Admin: NextPage = () => {
   const [guide, setGuide] = useState("les");
   const [displayed, setDisplayed] = useState("restaurants");
+  const { data, isLoading } = api.guide.getAll.useQuery({ guide });
 
   const router = useRouter();
   const { mutate: logout, isError } = api.admin.logout.useMutation({
@@ -36,6 +39,12 @@ const Admin: NextPage = () => {
         setDisplayed={setDisplayed}
         setGuide={setGuide}
       />
+      <Divider />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <AdminContent data={data!} displayed={displayed} />
+      )}
     </>
   );
 };

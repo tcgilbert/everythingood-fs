@@ -38,8 +38,8 @@ export const AdminNav = (props: Props) => {
           in Soho and Noho
         </p>
         <p
-          className={handleClass("nolita-chinatown-little-italy")}
-          onClick={() => props.setGuide("nolita-chinatown-little-italy")}
+          className={handleClass("nolita-chinatown-littleitaly")}
+          onClick={() => props.setGuide("nolita-chinatown-littleitaly")}
         >
           in Nolita, Chinatown, and Little Italy
         </p>
@@ -49,14 +49,16 @@ export const AdminNav = (props: Props) => {
             name="location"
             className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             defaultValue="Restaurants"
+            onChange={(e) => props.setDisplayed(e.target.value)}
+            value={props.displayed}
           >
-            <option>Restaurants</option>
-            <option>Bars</option>
-            <option>Cafes</option>
-            <option>Bakeries and Dessert</option>
-            <option>Grocery and Liquor</option>
-            <option>Shops</option>
-            <option>Art Galleries</option>
+            <option value="restaurants">Restaurants</option>
+            <option value="bars">Bars</option>
+            <option value="cafes">Cafes</option>
+            <option value="bakeriesAndDesserts">Bakeries and Dessert</option>
+            <option value="groceriesAndLiquor">Grocery and Liquor</option>
+            <option value="shops">Shops</option>
+            <option value="artGalleries">Art Galleries</option>
           </select>
         </div>
       </div>

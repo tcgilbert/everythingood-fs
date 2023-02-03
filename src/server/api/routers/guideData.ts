@@ -8,19 +8,40 @@ export const guideData = createTRPCRouter({
       const { guide } = input;
       const restaurants = await ctx.prisma.restaurant.findMany({
         where: { guide },
-        select: {
-          id: true,
-          name: true,
-          description: true,
-          guide: true,
-          idealGroupNumber: true,
-          bestThingOnTheMenu: true,
-          drinkOrder: true,
-          note: true,
-          price: true,
-          idealMeal: true,
-        },
       });
-      return { restaurants };
+
+      const bars = await ctx.prisma.bar.findMany({
+        where: { guide },
+      });
+
+      const cafes = await ctx.prisma.cafe.findMany({
+        where: { guide },
+      });
+
+      const shops = await ctx.prisma.shop.findMany({
+        where: { guide },
+      });
+
+      const artGalleries = await ctx.prisma.artGallery.findMany({
+        where: { guide },
+      });
+
+      const bakeriesAndDesserts = await ctx.prisma.bakeryAndDessert.findMany({
+        where: { guide },
+      });
+
+      const groceriesAndLiquor = await ctx.prisma.groceryAndLiquor.findMany({
+        where: { guide },
+      });
+
+      return {
+        restaurants,
+        bars,
+        cafes,
+        shops,
+        artGalleries,
+        bakeriesAndDesserts,
+        groceriesAndLiquor,
+      };
     }),
 });
