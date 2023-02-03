@@ -2,11 +2,10 @@ import { Restaurant } from "@prisma/client";
 
 interface Props {
   restaurant: Restaurant;
-  key: string;
 }
 
 export const RestaurantComponent = (props: Props) => {
-  const { restaurant, key } = props;
+  const { restaurant } = props;
   const {
     name,
     alsoGreat,

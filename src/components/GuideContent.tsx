@@ -10,6 +10,7 @@ import {
 
 import { RestaurantComponent } from "../components/Restaurant";
 import { BarComponent } from "../components/Bar";
+import { CafeComponent } from "../components/Cafe";
 
 interface Props {
   displayed: string;
@@ -49,7 +50,7 @@ export const GuideContent = (props: Props) => {
         });
       case "cafes":
         return cafes.map((ele) => {
-          return <div key={ele.id}>{ele.name}</div>;
+          return <CafeComponent key={ele.id} cafe={ele} />;
         });
       case "shops":
         return shops.map((ele) => {

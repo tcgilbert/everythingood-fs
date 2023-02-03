@@ -2,11 +2,10 @@ import { Bar } from "@prisma/client";
 
 interface Props {
   bar: Bar;
-  key: string;
 }
 
 export const BarComponent = (props: Props) => {
-  const { bar, key } = props;
+  const { bar } = props;
   const {
     name,
     description,
