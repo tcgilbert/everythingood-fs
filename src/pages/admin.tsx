@@ -18,7 +18,7 @@ const Admin: NextPage = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between px-3">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900">
           Everything Good Admin
           <RiAdminLine className="ml-1 inline h-12" />
@@ -30,14 +30,12 @@ const Admin: NextPage = () => {
           Logout
         </button>
       </div>
-      <div>
-        <AdminNav
-          guide={guide}
-          displayed={displayed}
-          setDisplayed={setDisplayed}
-          setGuide={setGuide}
-        />
-      </div>
+      <AdminNav
+        guide={guide}
+        displayed={displayed}
+        setDisplayed={setDisplayed}
+        setGuide={setGuide}
+      />
     </>
   );
 };
