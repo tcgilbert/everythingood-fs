@@ -15,7 +15,7 @@ export const AdminNav = (props: Props) => {
           return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-200 text-indigo-700";
         case "soho-noho":
           return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-green-200 text-green-700";
-        case "nolita-chinatown-little-italy":
+        case "nolita-chinatown-littleitaly":
           return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-red-200 text-red-700";
         default:
           return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-200 text-indigo-700";
@@ -26,8 +26,8 @@ export const AdminNav = (props: Props) => {
   };
 
   return (
-    <div>
-      <div className="ml-2 flex w-3/4">
+    <div className="border-b border-gray-300 bg-white pb-4">
+      <div className="ml-2 flex w-3/4 items-center">
         <p className={handleClass("les")} onClick={() => props.setGuide("les")}>
           on the Lower East Side
         </p>
@@ -47,7 +47,7 @@ export const AdminNav = (props: Props) => {
           <select
             id="location"
             name="location"
-            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            className="block w-full rounded-md border-gray-300 bg-gray-200 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             defaultValue="Restaurants"
             onChange={(e) => props.setDisplayed(e.target.value)}
             value={props.displayed}

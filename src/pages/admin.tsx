@@ -21,7 +21,7 @@ const Admin: NextPage = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between px-3">
+      <div className="flex items-center justify-between bg-white px-3">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900">
           Everything Good Admin
           <RiAdminLine className="ml-1 inline h-12" />
@@ -39,7 +39,7 @@ const Admin: NextPage = () => {
         setDisplayed={setDisplayed}
         setGuide={setGuide}
       />
-      <Divider />
+      <div className="py-3" />
       {isLoading ? (
         <div>Loading...</div>
       ) : (
