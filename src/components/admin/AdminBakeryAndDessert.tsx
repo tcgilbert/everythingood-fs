@@ -22,7 +22,7 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
   const handleUpdate = async () => {
     const payload = { ...modalInputs };
     await updateEntry(payload);
-    // refetch();
+    refetch();
     setOpen(false);
   };
 
