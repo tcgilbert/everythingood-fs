@@ -1,6 +1,7 @@
 import { AdminEntry } from "./AdminEntry";
 import { AdminRestaurant } from "./AdminRestaurant";
 import { AdminBar } from "./AdminBar";
+import { AdminBakeryAndDessert } from "./AdminBakeryAndDessert";
 import {
   ArtGallery,
   BakeryAndDessert,
@@ -61,7 +62,7 @@ export const AdminContent = ({
       case "bakeriesAndDesserts":
         return bakeriesAndDesserts.map((ele: BakeryAndDessert) => {
           return (
-            <AdminEntry type={"bakeriesAndDesserts"} key={ele.id} data={ele} />
+            <AdminBakeryAndDessert refetch={refetch} key={ele.id} data={ele} />
           );
         });
       case "groceriesAndLiquor":
