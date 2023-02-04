@@ -38,31 +38,35 @@ export const AdminContent = ({ data, displayed }: AdminContentProps) => {
     switch (displayed) {
       case "restaurants":
         return restaurants.map((ele: Restaurant) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return <AdminEntry type={"restaurants"} key={ele.id} data={ele} />;
         });
       case "bars":
         return bars.map((ele: Bar) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return <AdminEntry type={"bars"} key={ele.id} data={ele} />;
         });
       case "cafes":
         return cafes.map((ele: Cafe) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return <AdminEntry type={"cafes"} key={ele.id} data={ele} />;
         });
       case "shops":
         return shops.map((ele: Shop) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return <AdminEntry type={"shops"} key={ele.id} data={ele} />;
         });
       case "bakeriesAndDesserts":
         return bakeriesAndDesserts.map((ele: BakeryAndDessert) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return (
+            <AdminEntry type={"bakeriesAndDesserts"} key={ele.id} data={ele} />
+          );
         });
       case "groceriesAndLiquor":
         return groceriesAndLiquor.map((ele: GroceryAndLiquor) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return (
+            <AdminEntry type={"groceriesAndLiquor"} key={ele.id} data={ele} />
+          );
         });
       case "artGalleries":
         return artGalleries.map((ele: ArtGallery) => {
-          return <AdminEntry key={ele.id} data={ele} />;
+          return <AdminEntry type={"artGalleries"} key={ele.id} data={ele} />;
         });
       default:
         return null;

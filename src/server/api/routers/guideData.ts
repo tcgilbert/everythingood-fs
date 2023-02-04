@@ -47,6 +47,33 @@ export const guideData = createTRPCRouter({
     }),
   patch: publicProcedure.input(patchSchema).mutation(async ({ ctx, input }) => {
     console.log(input);
+    console.log("________________\n");
+    switch (input.type) {
+      case "restaurants":
+        console.log("restaurants");
+        return;
+      case "bars":
+        console.log("bars");
+        return;
+      case "cafes":
+        console.log("cafes");
+        return;
+      case "shops":
+        console.log("shops");
+        return;
+      case "bakeriesAndDesserts":
+        console.log("bakeriesAndDesserts");
+        return;
+      case "groceriesAndLiquor":
+        console.log("groceriesAndLiquor");
+        return;
+      case "artGalleries":
+        console.log("artGalleries");
+        return;
+      default:
+        console.log("no match");
+        return;
+    }
     return { success: true };
   }),
 });

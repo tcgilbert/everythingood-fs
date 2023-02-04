@@ -11,6 +11,7 @@ const barSchema = z.object({
   name: z.string(),
   note: z.string(),
   price: z.string(),
+  type: z.string(),
 });
 
 const restaurantSchema = z.object({
@@ -26,6 +27,7 @@ const restaurantSchema = z.object({
   idealMeal: z.string(),
   alsoGreat: z.string(),
   drinkOrder: z.string(),
+  type: z.string(),
 });
 
 const bakeryAndDessertSchema = z.object({
@@ -39,6 +41,7 @@ const bakeryAndDessertSchema = z.object({
   roomToHang: z.string(),
   bestThingOnTheMenu: z.string(),
   alsoGreat: z.string(),
+  type: z.string(),
 });
 
 const cafeSchema = z.object({
@@ -51,6 +54,7 @@ const cafeSchema = z.object({
   note: z.string(),
   link: z.string(),
   guide: z.string(),
+  type: z.string(),
 });
 
 const groceryAndLiquorSchema = z.object({
@@ -59,6 +63,7 @@ const groceryAndLiquorSchema = z.object({
   description: z.string(),
   link: z.string(),
   guide: z.string(),
+  type: z.string(),
 });
 
 const artGallerySchema = z.object({
@@ -66,6 +71,7 @@ const artGallerySchema = z.object({
   name: z.string(),
   link: z.string(),
   guide: z.string(),
+  type: z.string(),
 });
 
 const shopSchema = z.object({
@@ -74,6 +80,7 @@ const shopSchema = z.object({
   description: z.string(),
   link: z.string(),
   guide: z.string(),
+  type: z.string(),
 });
 
 export const patchSchema = barSchema
