@@ -44,4 +44,29 @@ export const guideData = createTRPCRouter({
         groceriesAndLiquor,
       };
     }),
+  patch: publicProcedure
+    .input(
+      z
+        .object({
+          guide: z.string(),
+          description: z.string(),
+          drinkSpecialty: z.string(),
+          food: z.string(),
+          id: z.string(),
+          idealGroupNumber: z.string(),
+          link: z.string(),
+          name: z.string(),
+          note: z.string(),
+          price: z.string(),
+        })
+        .or(
+          z.object({
+            guide: z.string(),
+          })
+        )
+    )
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      return { success: true };
+    }),
 });

@@ -8,7 +8,9 @@ import {
   Restaurant,
   Shop,
 } from "@prisma/client";
+import { log } from "console";
 import { Fragment, useState } from "react";
+import { api } from "../utils/api";
 
 interface AdminEntryProps {
   data:
@@ -24,6 +26,7 @@ interface AdminEntryProps {
 export const AdminEntry = (props: AdminEntryProps) => {
   const [open, setOpen] = useState(false);
   const { name } = props.data;
+  const { mutateAsync: updateEntry } = api.guide.patch.useMutation();
 
   const handleClick = () => {
     setOpen(true);
@@ -250,6 +253,11 @@ export const AdminEntry = (props: AdminEntryProps) => {
     }
   }
 
+  const handleUpdate = () => {
+    console.log(props.data);
+    updateEntry(props.data);
+  };
+
   function RenderObject(entry: object) {
     return (
       <div>
@@ -300,7 +308,10 @@ export const AdminEntry = (props: AdminEntryProps) => {
               >
                 <Dialog.Panel className="relative w-3/4 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all">
                   {props.data && RenderObject(props.data)}
-                  <button className=" my-3 rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                  <button
+                    onClick={handleUpdate}
+                    className=" my-3 rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                  >
                     Save
                   </button>
                 </Dialog.Panel>
