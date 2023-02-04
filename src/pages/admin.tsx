@@ -4,15 +4,16 @@ import { useState } from "react";
 import { RiAdminLine } from "react-icons/ri";
 import { api } from "../utils/api";
 import { AdminNav } from "../components/AdminNav";
-import { Divider } from "../components/Divider";
 import { AdminContent } from "../components/AdminContent";
 
 const Admin: NextPage = () => {
   const [guide, setGuide] = useState("les");
   const [displayed, setDisplayed] = useState("restaurants");
-  const { data, isLoading } = api.guide.getAll.useQuery({ guide });
-
   const router = useRouter();
+
+  // gets data
+  const { data, isLoading } = api.guide.getAll.useQuery({ guide });
+  // logs out
   const { mutate: logout, isError } = api.admin.logout.useMutation({
     onSuccess: () => {
       router.push("/login");

@@ -8,6 +8,7 @@ import {
   Restaurant,
   Shop,
 } from "@prisma/client";
+import { Dispatch, SetStateAction } from "react";
 
 interface AdminContentProps {
   data: {
@@ -22,7 +23,7 @@ interface AdminContentProps {
   displayed: string;
 }
 
-export const AdminContent = (props: AdminContentProps) => {
+export const AdminContent = ({ data, displayed }: AdminContentProps) => {
   const {
     restaurants,
     bars,
@@ -31,10 +32,10 @@ export const AdminContent = (props: AdminContentProps) => {
     artGalleries,
     bakeriesAndDesserts,
     groceriesAndLiquor,
-  } = props.data;
+  } = data;
 
   const handleContent = () => {
-    switch (props.displayed) {
+    switch (displayed) {
       case "restaurants":
         return restaurants.map((ele: Restaurant) => {
           return <AdminEntry key={ele.id} data={ele} />;
