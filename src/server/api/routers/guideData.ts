@@ -1,6 +1,7 @@
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
 import {
+  artGallerySchema,
   bakeryAndDessertSchema,
   barSchema,
   cafeSchema,
@@ -119,6 +120,18 @@ export const guideData = createTRPCRouter({
       console.log(input);
       console.log("________________\n");
       await ctx.prisma.shop.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
+
+  patchArtGallery: publicProcedure
+    .input(artGallerySchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.artGallery.update({
         where: { id: input.id },
         data: { ...input },
       });

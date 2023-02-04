@@ -5,6 +5,7 @@ import { AdminBakeryAndDessert } from "./AdminBakeryAndDessert";
 import { AdminCafe } from "./AdminCafe";
 import { AdminGroceryAndLiquor } from "./AdminGroceryAndLiquor";
 import { AdminShop } from "./AdminShop";
+import { AdminArtGallery } from "./AdminArtGallery";
 
 import {
   ArtGallery,
@@ -77,7 +78,7 @@ export const AdminContent = ({
         });
       case "artGalleries":
         return artGalleries.map((ele: ArtGallery) => {
-          return <AdminEntry type={"artGalleries"} key={ele.id} data={ele} />;
+          return <AdminArtGallery refetch={refetch} key={ele.id} data={ele} />;
         });
       default:
         return null;
