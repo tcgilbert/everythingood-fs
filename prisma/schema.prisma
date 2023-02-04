@@ -12,19 +12,19 @@ datasource db {
 }
 
 model Restaurant {
-    id                 String   @id @default(cuid())
-    createdAt          DateTime @default(now()) @ignore
-    updatedAt          DateTime @updatedAt @ignore
+    id                 String    @id @default(cuid())
+    createdAt          DateTime? @default(now()) @ignore
+    updatedAt          DateTime? @updatedAt @ignore
     name               String
-    description        String   @db.Text
+    description        String    @db.Text
     price              String
-    idealGroupNumber   String   @db.VarChar(255)
-    bestThingOnTheMenu String   @db.Text
+    idealGroupNumber   String    @db.VarChar(255)
+    bestThingOnTheMenu String    @db.Text
     idealMeal          String
-    alsoGreat          String   @db.Text
-    drinkOrder         String   @db.VarChar(255)
-    note               String   @db.Text
-    link               String   @db.VarChar(255)
+    alsoGreat          String    @db.Text
+    drinkOrder         String    @db.VarChar(255)
+    note               String    @db.Text
+    link               String    @db.VarChar(255)
     guide              String
 
     @@map("restaurants")

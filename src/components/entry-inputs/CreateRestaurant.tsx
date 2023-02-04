@@ -1,24 +1,46 @@
 import { useState } from "react";
 import { api } from "../../utils/api";
 import { guideText } from "../../lib/guideText";
+import { log } from "console";
 
 interface CreateRestaurantProps {
   guide: string;
+  refetch: () => void;
 }
 
-export const CreateRestaurant = ({ guide }: CreateRestaurantProps) => {
+export const CreateRestaurant = ({ guide, refetch }: CreateRestaurantProps) => {
   const [open, setOpen] = useState(false);
   const [modalInputs, setModalInputs] = useState({
     name: "",
     description: "",
     price: "",
     idealGroupNumber: "",
+    idealMeal: "",
     drinkOrder: "",
     bestThingOnTheMenu: "",
     link: "",
     note: "",
     alsoGreat: "",
   });
+  const { mutateAsync: createEntry } = api.guide.createRestaurant.useMutation();
+
+  const validateInputs = () => {
+    if (modalInputs.name === "") {
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async () => {
+    const payload = { ...modalInputs, guide };
+    if (!validateInputs()) {
+      alert('"Name" is required');
+      return;
+    }
+    await createEntry(payload);
+    refetch();
+    setOpen(false);
+  };
 
   return (
     <>
@@ -76,6 +98,22 @@ export const CreateRestaurant = ({ guide }: CreateRestaurantProps) => {
         </div>
         <div className="flex flex-col py-1">
           <label className="block text-sm font-medium text-gray-700">
+            Ideal Meal:
+          </label>
+          <input
+            className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            type="text"
+            value={modalInputs.idealMeal}
+            onChange={(e) => {
+              setModalInputs({
+                ...modalInputs,
+                idealMeal: e.target.value,
+              });
+            }}
+          />
+        </div>
+        <div className="flex flex-col py-1">
+          <label className="block text-sm font-medium text-gray-700">
             Drink Order:
           </label>
           <input
@@ -106,7 +144,7 @@ export const CreateRestaurant = ({ guide }: CreateRestaurantProps) => {
             }}
           />
         </div>
-        <div className=" flex flex-col py-1">
+        <div className="col-span-2 flex flex-col py-1">
           <label className="block text-sm font-medium text-gray-700">
             Link:
           </label>
@@ -179,7 +217,7 @@ export const CreateRestaurant = ({ guide }: CreateRestaurantProps) => {
       <div className="py-2" />
       <button
         onClick={() => {
-          console.log("savedd!!!");
+          handleSubmit();
         }}
         className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
       >

@@ -137,4 +137,15 @@ export const guideData = createTRPCRouter({
       });
       return { success: true };
     }),
+
+  createRestaurant: publicProcedure
+    .input(restaurantSchema.extend({ guide: z.string() }).omit({ id: true }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.restaurant.create({
+        data: { ...input },
+      });
+      return { success: true };
+    }),
 });

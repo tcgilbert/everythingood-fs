@@ -9,37 +9,43 @@ import { CreateGroceryAndLiquor } from "../entry-inputs/CreateGroceryAndLiquor";
 import { CreateShop } from "../entry-inputs/CreateShop";
 import { CreateArtGallery } from "../entry-inputs/CreateArtGallery";
 
-export const CreateEntry = () => {
+interface CreateEntryProps {
+  refetch: () => void;
+}
+
+export const CreateEntry = ({ refetch }: CreateEntryProps) => {
   const [open, setOpen] = useState(false);
   const [guide, setGuide] = useState("les");
   const [type, setType] = useState("restaurants");
   const [typesSelected, setTypesSelected] = useState(false);
 
   const handleClick = () => {
+    if (typesSelected) {
+      setTypesSelected(false);
+    }
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setTypesSelected(false);
   };
 
   const handleSelected = () => {
     switch (type) {
       case "restaurants":
-        return <CreateRestaurant guide={guide} />;
+        return <CreateRestaurant refetch={refetch} guide={guide} />;
       case "bars":
-        return <CreateBar guide={guide} />;
+        return <CreateBar refetch={refetch} guide={guide} />;
       case "cafes":
-        return <CreateCafe guide={guide} />;
+        return <CreateCafe refetch={refetch} guide={guide} />;
       case "bakeriesAndDesserts":
-        return <CreateBakeryAndDessert guide={guide} />;
+        return <CreateBakeryAndDessert refetch={refetch} guide={guide} />;
       case "groceriesAndLiquor":
-        return <CreateGroceryAndLiquor guide={guide} />;
+        return <CreateGroceryAndLiquor refetch={refetch} guide={guide} />;
       case "shops":
-        return <CreateShop guide={guide} />;
+        return <CreateShop refetch={refetch} guide={guide} />;
       case "artGalleries":
-        return <CreateArtGallery guide={guide} />;
+        return <CreateArtGallery refetch={refetch} guide={guide} />;
       default:
         null;
     }
