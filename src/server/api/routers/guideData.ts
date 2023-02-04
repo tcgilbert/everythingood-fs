@@ -202,4 +202,19 @@ export const guideData = createTRPCRouter({
 
       return { success: true };
     }),
+
+  createGroceryAndLiquor: publicProcedure
+    .input(
+      groceryAndLiquorSchema.extend({ guide: z.string() }).omit({ id: true })
+    )
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+
+      await ctx.prisma.groceryAndLiquor.create({
+        data: { ...input },
+      });
+
+      return { success: true };
+    }),
 });

@@ -1,24 +1,56 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { guideText } from "../../lib/guideText";
 import { api } from "../../utils/api";
 
 interface CreateGroceryAndLiquorProps {
-  guide: string;
+  guideInput: string;
+  refetch: () => void;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setGuide: Dispatch<SetStateAction<string>>;
+  setDisplayed: Dispatch<SetStateAction<string>>;
 }
 
 export const CreateGroceryAndLiquor = ({
-  guide,
+  guideInput,
+  refetch,
+  setOpen,
+  setGuide,
+  setDisplayed,
 }: CreateGroceryAndLiquorProps) => {
-  const [open, setOpen] = useState(false);
   const [modalInputs, setModalInputs] = useState({
     name: "",
     description: "",
     link: "",
   });
+
+  const { mutateAsync: createEntry } =
+    api.guide.createGroceryAndLiquor.useMutation();
+
+  const validateInputs = () => {
+    if (modalInputs.name === "") {
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async () => {
+    const payload = { ...modalInputs, guide: guideInput };
+    if (!validateInputs()) {
+      alert('"Name" is required');
+      return;
+    }
+    await createEntry(payload);
+    refetch();
+    setDisplayed("groceriesAndLiquor");
+    setGuide(guideInput);
+    setOpen(false);
+  };
+
   return (
     <>
       <h1 className="font-eb text-2xl">
-        Grocery & Liquor: <span className="italic">{guideText(guide)}</span>
+        Grocery & Liquor:{" "}
+        <span className="italic">{guideText(guideInput)}</span>
       </h1>
       <div className="grid grid-cols-2 gap-2">
         <div className=" flex flex-col py-1">
@@ -78,7 +110,7 @@ export const CreateGroceryAndLiquor = ({
       <div className="py-2" />
       <button
         onClick={() => {
-          console.log("savedd!!!");
+          handleSubmit();
         }}
         className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
       >
