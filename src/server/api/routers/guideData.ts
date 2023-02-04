@@ -1,5 +1,6 @@
-import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
+import { z } from "zod";
+import { patchSchema } from "../schemas";
 
 export const guideData = createTRPCRouter({
   getAll: publicProcedure
@@ -44,29 +45,8 @@ export const guideData = createTRPCRouter({
         groceriesAndLiquor,
       };
     }),
-  patch: publicProcedure
-    .input(
-      z
-        .object({
-          guide: z.string(),
-          description: z.string(),
-          drinkSpecialty: z.string(),
-          food: z.string(),
-          id: z.string(),
-          idealGroupNumber: z.string(),
-          link: z.string(),
-          name: z.string(),
-          note: z.string(),
-          price: z.string(),
-        })
-        .or(
-          z.object({
-            guide: z.string(),
-          })
-        )
-    )
-    .mutation(async ({ ctx, input }) => {
-      console.log(input);
-      return { success: true };
-    }),
+  patch: publicProcedure.input(patchSchema).mutation(async ({ ctx, input }) => {
+    console.log(input);
+    return { success: true };
+  }),
 });

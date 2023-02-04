@@ -23,7 +23,7 @@ export const adminRouter = createTRPCRouter({
           .setProtectedHeader({ alg: "HS256" })
           .setJti(nanoid())
           .setIssuedAt()
-          .setExpirationTime("1m")
+          .setExpirationTime("1h")
           .sign(new TextEncoder().encode(getJwtSecretKey()));
 
         res.setHeader(
