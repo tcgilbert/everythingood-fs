@@ -75,7 +75,7 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
         return (
           <div key={key} className="flex flex-col py-1">
             <label className="block text-sm font-medium text-gray-700">
-              Ideal Group Number
+              Room to Hang:
             </label>
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -200,14 +200,14 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
   }
 
   return (
-    <div className="col-span-1 mb-2 overflow-hidden border border-red-100 bg-white shadow sm:rounded-lg">
+    <div className="col-span-1 mb-2 overflow-hidden border border-gray-100 bg-white shadow sm:rounded-lg">
       <div className="flex items-center justify-between p-2">
         <h3 className="font-robo text-2xl font-medium leading-6 text-gray-900">
           {name}
         </h3>
         <button
           onClick={handleClick}
-          className="rounded-md border border-transparent bg-gray-500 py-1 px-4 text-sm font-medium text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+          className="rounded-md border border-transparent bg-gray-200 py-1 px-4 text-sm font-medium text-gray-700 hover:bg-gray-400 hover:text-white"
         >
           Edit
         </button>

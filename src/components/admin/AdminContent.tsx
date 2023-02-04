@@ -1,4 +1,3 @@
-import { AdminEntry } from "./AdminEntry";
 import { AdminRestaurant } from "./AdminRestaurant";
 import { AdminBar } from "./AdminBar";
 import { AdminBakeryAndDessert } from "./AdminBakeryAndDessert";
