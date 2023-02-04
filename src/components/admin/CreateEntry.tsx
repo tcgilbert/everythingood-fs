@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 
 import { CreateRestaurant } from "../entry-inputs/CreateRestaurant";
 import { CreateBar } from "../entry-inputs/CreateBar";
@@ -11,11 +11,17 @@ import { CreateArtGallery } from "../entry-inputs/CreateArtGallery";
 
 interface CreateEntryProps {
   refetch: () => void;
+  setGuide: Dispatch<SetStateAction<string>>;
+  setDisplayed: Dispatch<SetStateAction<string>>;
 }
 
-export const CreateEntry = ({ refetch }: CreateEntryProps) => {
+export const CreateEntry = ({
+  refetch,
+  setGuide,
+  setDisplayed,
+}: CreateEntryProps) => {
   const [open, setOpen] = useState(false);
-  const [guide, setGuide] = useState("les");
+  const [guideInput, setGuideInput] = useState("les");
   const [type, setType] = useState("restaurants");
   const [typesSelected, setTypesSelected] = useState(false);
 
@@ -33,9 +39,25 @@ export const CreateEntry = ({ refetch }: CreateEntryProps) => {
   const handleSelected = () => {
     switch (type) {
       case "restaurants":
-        return <CreateRestaurant refetch={refetch} guide={guide} />;
+        return (
+          <CreateRestaurant
+            setOpen={setOpen}
+            refetch={refetch}
+            guideInput={guideInput}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
+        );
       case "bars":
-        return <CreateBar refetch={refetch} guide={guide} />;
+        return (
+          <CreateBar
+            setOpen={setOpen}
+            refetch={refetch}
+            guideInput={guideInput}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
+        );
       case "cafes":
         return <CreateCafe refetch={refetch} guide={guide} />;
       case "bakeriesAndDesserts":
@@ -62,8 +84,8 @@ export const CreateEntry = ({ refetch }: CreateEntryProps) => {
                 id="guide"
                 name="guide"
                 className="block w-full rounded-md border-gray-300 bg-gray-200 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                value={guide}
-                onChange={(e) => setGuide(e.target.value)}
+                value={guideInput}
+                onChange={(e) => setGuideInput(e.target.value)}
               >
                 <option value="les">on The Lower East Side</option>
                 <option value="soho-noho">in Soho and Noho</option>

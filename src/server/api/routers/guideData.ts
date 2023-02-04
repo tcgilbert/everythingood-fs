@@ -148,4 +148,17 @@ export const guideData = createTRPCRouter({
       });
       return { success: true };
     }),
+
+  createBar: publicProcedure
+    .input(barSchema.extend({ guide: z.string() }).omit({ id: true }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+
+      await ctx.prisma.bar.create({
+        data: { ...input },
+      });
+
+      return { success: true };
+    }),
 });

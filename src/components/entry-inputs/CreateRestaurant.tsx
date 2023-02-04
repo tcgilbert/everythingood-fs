@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { api } from "../../utils/api";
 import { guideText } from "../../lib/guideText";
 import { log } from "console";
 
 interface CreateRestaurantProps {
-  guide: string;
+  guideInput: string;
   refetch: () => void;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setGuide: Dispatch<SetStateAction<string>>;
+  setDisplayed: Dispatch<SetStateAction<string>>;
 }
 
-export const CreateRestaurant = ({ guide, refetch }: CreateRestaurantProps) => {
-  const [open, setOpen] = useState(false);
+export const CreateRestaurant = ({
+  guideInput,
+  refetch,
+  setOpen,
+  setGuide,
+  setDisplayed,
+}: CreateRestaurantProps) => {
   const [modalInputs, setModalInputs] = useState({
     name: "",
     description: "",
@@ -32,20 +40,22 @@ export const CreateRestaurant = ({ guide, refetch }: CreateRestaurantProps) => {
   };
 
   const handleSubmit = async () => {
-    const payload = { ...modalInputs, guide };
+    const payload = { ...modalInputs, guide: guideInput };
     if (!validateInputs()) {
       alert('"Name" is required');
       return;
     }
     await createEntry(payload);
     refetch();
+    setDisplayed("restaurants");
+    setGuide(guideInput);
     setOpen(false);
   };
 
   return (
     <>
       <h1 className="font-eb text-2xl">
-        Restaurant: <span className="italic">{guideText(guide)}</span>
+        Restaurant: <span className="italic">{guideText(guideInput)}</span>
       </h1>
       <div className="grid grid-cols-2 gap-2">
         <div className=" flex flex-col py-1">

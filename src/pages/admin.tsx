@@ -31,7 +31,11 @@ const Admin: NextPage = () => {
           <RiAdminLine className="ml-1 inline h-12" />
         </h2>
         <div className="flex justify-between">
-          <CreateEntry />
+          <CreateEntry
+            refetch={refetch}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
           <Link
             className="relative -ml-px inline-flex items-center border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-400 hover:text-white focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             href="/"
