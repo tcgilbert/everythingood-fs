@@ -4,6 +4,10 @@ import { Fragment, useState } from "react";
 import { CreateRestaurant } from "../entry-inputs/CreateRestaurant";
 import { CreateBar } from "../entry-inputs/CreateBar";
 import { CreateCafe } from "../entry-inputs/CreateCafe";
+import { CreateBakeryAndDessert } from "../entry-inputs/CreateBakeryAndDessert";
+import { CreateGroceryAndLiquor } from "../entry-inputs/CreateGroceryAndLiquor";
+import { CreateShop } from "../entry-inputs/CreateShop";
+import { CreateArtGallery } from "../entry-inputs/CreateArtGallery";
 
 export const CreateEntry = () => {
   const [open, setOpen] = useState(false);
@@ -74,7 +78,7 @@ export const CreateEntry = () => {
     } else {
       return (
         <>
-          <CreateCafe />
+          <CreateArtGallery guide={guide} />
         </>
       );
     }
