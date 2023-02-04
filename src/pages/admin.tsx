@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { RiAdminLine } from "react-icons/ri";
 import { api } from "../utils/api";
-import { AdminNav } from "../components/AdminNav";
-import { AdminContent } from "../components/AdminContent";
+import { AdminNav } from "../components/admin/AdminNav";
+import { AdminContent } from "../components/admin/AdminContent";
 
 const Admin: NextPage = () => {
   const [guide, setGuide] = useState("les");
@@ -12,7 +12,7 @@ const Admin: NextPage = () => {
   const router = useRouter();
 
   // gets data
-  const { data, isLoading } = api.guide.getAll.useQuery({ guide });
+  const { data, isLoading, refetch } = api.guide.getAll.useQuery({ guide });
   // logs out
   const { mutate: logout, isError } = api.admin.logout.useMutation({
     onSuccess: () => {
@@ -44,7 +44,7 @@ const Admin: NextPage = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <AdminContent data={data!} displayed={displayed} />
+        <AdminContent data={data!} displayed={displayed} refetch={refetch} />
       )}
     </>
   );

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const barSchema = z.object({
+export const barSchema = z.object({
   guide: z.string(),
   description: z.string(),
   drinkSpecialty: z.string(),
@@ -11,10 +11,9 @@ const barSchema = z.object({
   name: z.string(),
   note: z.string(),
   price: z.string(),
-  type: z.string(),
 });
 
-const restaurantSchema = z.object({
+export const restaurantSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
@@ -27,10 +26,9 @@ const restaurantSchema = z.object({
   idealMeal: z.string(),
   alsoGreat: z.string(),
   drinkOrder: z.string(),
-  type: z.string(),
 });
 
-const bakeryAndDessertSchema = z.object({
+export const bakeryAndDessertSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
@@ -41,10 +39,9 @@ const bakeryAndDessertSchema = z.object({
   roomToHang: z.string(),
   bestThingOnTheMenu: z.string(),
   alsoGreat: z.string(),
-  type: z.string(),
 });
 
-const cafeSchema = z.object({
+export const cafeSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
@@ -54,33 +51,29 @@ const cafeSchema = z.object({
   note: z.string(),
   link: z.string(),
   guide: z.string(),
-  type: z.string(),
 });
 
-const groceryAndLiquorSchema = z.object({
+export const groceryAndLiquorSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
   link: z.string(),
   guide: z.string(),
-  type: z.string(),
 });
 
-const artGallerySchema = z.object({
+export const artGallerySchema = z.object({
   id: z.string(),
   name: z.string(),
   link: z.string(),
   guide: z.string(),
-  type: z.string(),
 });
 
-const shopSchema = z.object({
+export const shopSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
   link: z.string(),
   guide: z.string(),
-  type: z.string(),
 });
 
 export const patchSchema = barSchema

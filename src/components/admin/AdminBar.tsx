@@ -1,32 +1,18 @@
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  ArtGallery,
-  BakeryAndDessert,
-  Bar,
-  Cafe,
-  GroceryAndLiquor,
-  Restaurant,
-  Shop,
-} from "@prisma/client";
+import { Bar } from "@prisma/client";
 import { Fragment, useState } from "react";
-import { api } from "../utils/api";
+import { api } from "../../utils/api";
 
 interface AdminEntryProps {
-  data:
-    | Restaurant
-    | Bar
-    | Cafe
-    | Shop
-    | BakeryAndDessert
-    | GroceryAndLiquor
-    | ArtGallery;
-  type: string;
+  data: Bar;
+  refetch: () => void;
 }
 
-export const AdminEntry = ({ data, type }: AdminEntryProps) => {
+export const AdminBar = ({ data, refetch }: AdminEntryProps) => {
   const [open, setOpen] = useState(false);
+  const [modalInputs, setModalInputs] = useState({ ...data });
   const { name } = data;
-  const { mutateAsync: updateEntry } = api.guide.patch.useMutation();
+  const { mutateAsync: updateEntry } = api.guide.patchBar.useMutation();
 
   const handleClick = () => {
     setOpen(true);
@@ -36,20 +22,23 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
     switch (key) {
       case "name":
         return (
-          <div key={key} className="flex flex-col py-1">
+          <div key={key} className=" flex flex-col py-1">
             <label className="block text-sm font-medium text-gray-700">
               Name:
             </label>
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
+              value={modalInputs.name}
+              onChange={(e) => {
+                setModalInputs({ ...modalInputs, name: e.target.value });
+              }}
             />
           </div>
         );
       case "description":
         return (
-          <div key={key} className="flex flex-col py-1">
+          <div key={key} className="col-span-2 flex flex-col py-1">
             <label className="block text-sm font-medium text-gray-700">
               Description:
             </label>
@@ -58,7 +47,10 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
               name="comment"
               id="comment"
               className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={value}
+              value={modalInputs.description}
+              onChange={(e) => {
+                setModalInputs({ ...modalInputs, description: e.target.value });
+              }}
             />
           </div>
         );
@@ -71,7 +63,10 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
+              value={modalInputs.price}
+              onChange={(e) => {
+                setModalInputs({ ...modalInputs, price: e.target.value });
+              }}
             />
           </div>
         );
@@ -84,54 +79,20 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
+              value={modalInputs.idealGroupNumber}
+              onChange={(e) => {
+                setModalInputs({
+                  ...modalInputs,
+                  idealGroupNumber: e.target.value,
+                });
+              }}
             />
           </div>
         );
-      case "bestThingOnTheMenu":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Best Thing on the Menu:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "idealMeal":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Ideal Meal:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "alsoGreat":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Also Great:
-            </label>
-            <textarea
-              rows={4}
-              name="comment"
-              id="comment"
-              className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={value}
-            />
-          </div>
-        );
+
       case "note":
         return (
-          <div key={key} className="flex flex-col py-1">
+          <div key={key} className="col-span-2 flex flex-col py-1">
             <label className="block text-sm font-medium text-gray-700">
               Note:
             </label>
@@ -140,33 +101,26 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
               name="comment"
               id="comment"
               className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={value}
+              value={modalInputs.note}
+              onChange={(e) => {
+                setModalInputs({ ...modalInputs, note: e.target.value });
+              }}
             />
           </div>
         );
       case "link":
         return (
-          <div key={key} className="flex flex-col py-1">
+          <div key={key} className=" flex flex-col py-1">
             <label className="block text-sm font-medium text-gray-700">
               Link:
             </label>
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "drinkOrder":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Drink Order:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
+              value={modalInputs.link}
+              onChange={(e) => {
+                setModalInputs({ ...modalInputs, link: e.target.value });
+              }}
             />
           </div>
         );
@@ -179,7 +133,13 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
+              value={modalInputs.drinkSpecialty}
+              onChange={(e) => {
+                setModalInputs({
+                  ...modalInputs,
+                  drinkSpecialty: e.target.value,
+                });
+              }}
             />
           </div>
         );
@@ -192,59 +152,13 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
             <input
               className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "coffeeBeans":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Coffee Beans:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "roomToHang":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Room to Hang:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "specialty":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Specialty:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
-            />
-          </div>
-        );
-      case "bakedGoods":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Baked Goods:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={value}
+              value={modalInputs.food}
+              onChange={(e) => {
+                setModalInputs({
+                  ...modalInputs,
+                  food: e.target.value,
+                });
+              }}
             />
           </div>
         );
@@ -253,18 +167,34 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
     }
   }
 
-  const handleUpdate = () => {
-    const payload = { ...data, type };
-    updateEntry(payload);
+  const handleUpdate = async () => {
+    const payload = { ...modalInputs };
+    await updateEntry(payload);
+    refetch();
+    setOpen(false);
   };
 
-  function RenderObject(entry: object) {
+  const handleClose = () => {
+    setOpen(false);
+    setTimeout(() => {
+      setModalInputs({ ...data });
+    }, 1000);
+  };
+
+  function RenderObject(entry: Bar) {
+    const movePropertiesToEnd = (obj: Bar) => {
+      const { description, note, ...rest } = obj;
+      return { ...rest, description, note };
+    };
+
+    const updatedObj = movePropertiesToEnd(entry);
+
     return (
-      <div>
-        {Object.entries(entry).map(([key, value]) =>
+      <>
+        {Object.entries(updatedObj).map(([key, value]) =>
           handleModalInputs(key, value)
         )}
-      </div>
+      </>
     );
   }
 
@@ -282,7 +212,7 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
         </button>
       </div>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Dialog as="div" className="relative z-10" onClose={handleClose}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -307,7 +237,9 @@ export const AdminEntry = ({ data, type }: AdminEntryProps) => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative w-3/4 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all">
-                  {data && RenderObject(data)}
+                  <div className="grid grid-cols-2 gap-2">
+                    {data && RenderObject(data)}
+                  </div>
                   <button
                     onClick={handleUpdate}
                     className=" my-3 rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"

@@ -1,4 +1,6 @@
 import { AdminEntry } from "./AdminEntry";
+import { AdminRestaurant } from "./AdminRestaurant";
+import { AdminBar } from "./AdminBar";
 import {
   ArtGallery,
   BakeryAndDessert,
@@ -8,7 +10,6 @@ import {
   Restaurant,
   Shop,
 } from "@prisma/client";
-import { Dispatch, SetStateAction } from "react";
 
 interface AdminContentProps {
   data: {
@@ -21,9 +22,14 @@ interface AdminContentProps {
     artGalleries: ArtGallery[];
   };
   displayed: string;
+  refetch: () => void;
 }
 
-export const AdminContent = ({ data, displayed }: AdminContentProps) => {
+export const AdminContent = ({
+  data,
+  displayed,
+  refetch,
+}: AdminContentProps) => {
   const {
     restaurants,
     bars,
@@ -38,11 +44,11 @@ export const AdminContent = ({ data, displayed }: AdminContentProps) => {
     switch (displayed) {
       case "restaurants":
         return restaurants.map((ele: Restaurant) => {
-          return <AdminEntry type={"restaurants"} key={ele.id} data={ele} />;
+          return <AdminRestaurant key={ele.id} data={ele} refetch={refetch} />;
         });
       case "bars":
         return bars.map((ele: Bar) => {
-          return <AdminEntry type={"bars"} key={ele.id} data={ele} />;
+          return <AdminBar refetch={refetch} key={ele.id} data={ele} />;
         });
       case "cafes":
         return cafes.map((ele: Cafe) => {

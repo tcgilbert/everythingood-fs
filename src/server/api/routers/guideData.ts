@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
-import { patchSchema } from "../schemas";
+import { barSchema, patchSchema, restaurantSchema } from "../schemas";
 
 export const guideData = createTRPCRouter({
   getAll: publicProcedure
@@ -45,35 +45,28 @@ export const guideData = createTRPCRouter({
         groceriesAndLiquor,
       };
     }),
-  patch: publicProcedure.input(patchSchema).mutation(async ({ ctx, input }) => {
-    console.log(input);
-    console.log("________________\n");
-    switch (input.type) {
-      case "restaurants":
-        console.log("restaurants");
-        return;
-      case "bars":
-        console.log("bars");
-        return;
-      case "cafes":
-        console.log("cafes");
-        return;
-      case "shops":
-        console.log("shops");
-        return;
-      case "bakeriesAndDesserts":
-        console.log("bakeriesAndDesserts");
-        return;
-      case "groceriesAndLiquor":
-        console.log("groceriesAndLiquor");
-        return;
-      case "artGalleries":
-        console.log("artGalleries");
-        return;
-      default:
-        console.log("no match");
-        return;
-    }
-    return { success: true };
-  }),
+
+  patchRestaurant: publicProcedure
+    .input(restaurantSchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.restaurant.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
+
+  patchBar: publicProcedure
+    .input(barSchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.bar.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
 });
