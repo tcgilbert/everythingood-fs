@@ -4,8 +4,9 @@ import {
   bakeryAndDessertSchema,
   barSchema,
   cafeSchema,
-  patchSchema,
+  groceryAndLiquorSchema,
   restaurantSchema,
+  shopSchema,
 } from "../schemas";
 
 export const guideData = createTRPCRouter({
@@ -94,6 +95,30 @@ export const guideData = createTRPCRouter({
       console.log(input);
       console.log("________________\n");
       await ctx.prisma.cafe.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
+
+  patchGroceryAndLiquor: publicProcedure
+    .input(groceryAndLiquorSchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.groceryAndLiquor.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
+
+  patchShop: publicProcedure
+    .input(shopSchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.shop.update({
         where: { id: input.id },
         data: { ...input },
       });

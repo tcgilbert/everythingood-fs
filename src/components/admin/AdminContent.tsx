@@ -3,6 +3,9 @@ import { AdminRestaurant } from "./AdminRestaurant";
 import { AdminBar } from "./AdminBar";
 import { AdminBakeryAndDessert } from "./AdminBakeryAndDessert";
 import { AdminCafe } from "./AdminCafe";
+import { AdminGroceryAndLiquor } from "./AdminGroceryAndLiquor";
+import { AdminShop } from "./AdminShop";
+
 import {
   ArtGallery,
   BakeryAndDessert,
@@ -58,7 +61,7 @@ export const AdminContent = ({
         });
       case "shops":
         return shops.map((ele: Shop) => {
-          return <AdminEntry type={"shops"} key={ele.id} data={ele} />;
+          return <AdminShop refetch={refetch} key={ele.id} data={ele} />;
         });
       case "bakeriesAndDesserts":
         return bakeriesAndDesserts.map((ele: BakeryAndDessert) => {
@@ -69,7 +72,7 @@ export const AdminContent = ({
       case "groceriesAndLiquor":
         return groceriesAndLiquor.map((ele: GroceryAndLiquor) => {
           return (
-            <AdminEntry type={"groceriesAndLiquor"} key={ele.id} data={ele} />
+            <AdminGroceryAndLiquor refetch={refetch} key={ele.id} data={ele} />
           );
         });
       case "artGalleries":
