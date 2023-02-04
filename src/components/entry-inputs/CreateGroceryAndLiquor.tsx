@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { guideText } from "../../lib/guideText";
 import { api } from "../../utils/api";
 
-export const CreateGroceryAndLiquor = () => {
+interface CreateGroceryAndLiquorProps {
+  guide: string;
+}
+
+export const CreateGroceryAndLiquor = ({
+  guide,
+}: CreateGroceryAndLiquorProps) => {
   const [open, setOpen] = useState(false);
   const [modalInputs, setModalInputs] = useState({
     name: "",
@@ -10,6 +17,9 @@ export const CreateGroceryAndLiquor = () => {
   });
   return (
     <>
+      <h1 className="font-eb text-2xl">
+        Grocery & Liquor: <span className="italic">{guideText(guide)}</span>
+      </h1>
       <div className="grid grid-cols-2 gap-2">
         <div className=" flex flex-col py-1">
           <label className="block text-sm font-medium text-gray-700">
@@ -72,7 +82,7 @@ export const CreateGroceryAndLiquor = () => {
         }}
         className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
       >
-        Save
+        Create Grocery & Liquor Entry
       </button>
     </>
   );

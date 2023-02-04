@@ -24,6 +24,27 @@ export const CreateEntry = () => {
     setTypesSelected(false);
   };
 
+  const handleSelected = () => {
+    switch (type) {
+      case "restaurants":
+        return <CreateRestaurant guide={guide} />;
+      case "bars":
+        return <CreateBar guide={guide} />;
+      case "cafes":
+        return <CreateCafe guide={guide} />;
+      case "bakeriesAndDesserts":
+        return <CreateBakeryAndDessert guide={guide} />;
+      case "groceriesAndLiquor":
+        return <CreateGroceryAndLiquor guide={guide} />;
+      case "shops":
+        return <CreateShop guide={guide} />;
+      case "artGalleries":
+        return <CreateArtGallery guide={guide} />;
+      default:
+        null;
+    }
+  };
+
   const handleDisplay = () => {
     if (!typesSelected) {
       return (
@@ -57,10 +78,8 @@ export const CreateEntry = () => {
                 <option value="restaurants">Restaurants</option>
                 <option value="bars">Bars</option>
                 <option value="cafes">Cafes</option>
-                <option value="bakeriesAndDesserts">
-                  Bakeries and Dessert
-                </option>
-                <option value="groceriesAndLiquor">Grocery and Liquor</option>
+                <option value="bakeriesAndDesserts">Bakeries & Dessert</option>
+                <option value="groceriesAndLiquor">Groceries & Liquor</option>
                 <option value="shops">Shops</option>
                 <option value="artGalleries">Art Galleries</option>
               </select>
@@ -76,11 +95,7 @@ export const CreateEntry = () => {
         </>
       );
     } else {
-      return (
-        <>
-          <CreateArtGallery guide={guide} />
-        </>
-      );
+      return <>{handleSelected()}</>;
     }
   };
 
