@@ -1,11 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { BakeryAndDessert } from "@prisma/client";
 import { Fragment, useState } from "react";
-import { api } from "../../utils/api";
+
+import { CreateRestaurant } from "../entry-inputs/CreateRestaurant";
+import { CreateBar } from "../entry-inputs/CreateBar";
+import { CreateCafe } from "../entry-inputs/CreateCafe";
 
 export const CreateEntry = () => {
   const [open, setOpen] = useState(false);
-  const [modalInputs, setModalInputs] = useState();
   const [guide, setGuide] = useState("les");
   const [type, setType] = useState("restaurants");
   const [typesSelected, setTypesSelected] = useState(false);
@@ -73,14 +74,7 @@ export const CreateEntry = () => {
     } else {
       return (
         <>
-          <div className="grid grid-cols-2 gap-3">Start your inputs!!!</div>
-          <div className="py-3" />
-          <button
-            onClick={() => console.log("clicked")}
-            className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
-          >
-            Next
-          </button>
+          <CreateCafe />
         </>
       );
     }
