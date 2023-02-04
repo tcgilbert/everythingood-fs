@@ -2,6 +2,7 @@ import { AdminEntry } from "./AdminEntry";
 import { AdminRestaurant } from "./AdminRestaurant";
 import { AdminBar } from "./AdminBar";
 import { AdminBakeryAndDessert } from "./AdminBakeryAndDessert";
+import { AdminCafe } from "./AdminCafe";
 import {
   ArtGallery,
   BakeryAndDessert,
@@ -53,7 +54,7 @@ export const AdminContent = ({
         });
       case "cafes":
         return cafes.map((ele: Cafe) => {
-          return <AdminEntry type={"cafes"} key={ele.id} data={ele} />;
+          return <AdminCafe refetch={refetch} key={ele.id} data={ele} />;
         });
       case "shops":
         return shops.map((ele: Shop) => {

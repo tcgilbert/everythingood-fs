@@ -3,6 +3,7 @@ import { z } from "zod";
 import {
   bakeryAndDessertSchema,
   barSchema,
+  cafeSchema,
   patchSchema,
   restaurantSchema,
 } from "../schemas";
@@ -81,6 +82,18 @@ export const guideData = createTRPCRouter({
       console.log(input);
       console.log("________________\n");
       await ctx.prisma.bakeryAndDessert.update({
+        where: { id: input.id },
+        data: { ...input },
+      });
+      return { success: true };
+    }),
+
+  patchCafe: publicProcedure
+    .input(cafeSchema)
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.cafe.update({
         where: { id: input.id },
         data: { ...input },
       });
