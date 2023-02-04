@@ -18,64 +18,6 @@ export const AdminShop = ({ data, refetch }: AdminEntryProps) => {
     setOpen(true);
   };
 
-  function handleModalInputs(key: string, value: string) {
-    switch (key) {
-      case "name":
-        return (
-          <div key={key} className=" flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Name:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.name}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, name: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "description":
-        return (
-          <div key={key} className="col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Description:
-            </label>
-            <textarea
-              rows={4}
-              name="comment"
-              id="comment"
-              className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={modalInputs.description}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, description: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "link":
-        return (
-          <div key={key} className=" col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Link:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.link}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, link: e.target.value });
-              }}
-            />
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  }
-
   const handleUpdate = async () => {
     const payload = { ...modalInputs };
     await updateEntry(payload);
@@ -89,23 +31,6 @@ export const AdminShop = ({ data, refetch }: AdminEntryProps) => {
       setModalInputs({ ...data });
     }, 1000);
   };
-
-  function RenderObject(entry: Shop) {
-    const movePropertiesToEnd = (obj: Shop) => {
-      const { description, ...rest } = obj;
-      return { ...rest, description };
-    };
-
-    const updatedObj = movePropertiesToEnd(entry);
-
-    return (
-      <>
-        {Object.entries(updatedObj).map(([key, value]) =>
-          handleModalInputs(key, value)
-        )}
-      </>
-    );
-  }
 
   return (
     <div className="col-span-1 mb-2 overflow-hidden border border-gray-100 bg-white shadow sm:rounded-lg">
@@ -147,11 +72,61 @@ export const AdminShop = ({ data, refetch }: AdminEntryProps) => {
               >
                 <Dialog.Panel className="relative w-3/4 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all">
                   <div className="grid grid-cols-2 gap-2">
-                    {data && RenderObject(data)}
+                    <div className=" flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Name:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.name}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            name: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className=" flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Link:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.link}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            link: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="col-span-2 flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Description:
+                      </label>
+                      <textarea
+                        rows={4}
+                        name="comment"
+                        id="comment"
+                        className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        value={modalInputs.description}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            description: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
                   </div>
+                  <div className="py-2" />
                   <button
                     onClick={handleUpdate}
-                    className=" my-3 rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                    className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
                   >
                     Save
                   </button>
