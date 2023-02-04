@@ -59,7 +59,15 @@ export const CreateEntry = ({
           />
         );
       case "cafes":
-        return <CreateCafe refetch={refetch} guide={guide} />;
+        return (
+          <CreateCafe
+            setOpen={setOpen}
+            refetch={refetch}
+            guideInput={guideInput}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
+        );
       case "bakeriesAndDesserts":
         return <CreateBakeryAndDessert refetch={refetch} guide={guide} />;
       case "groceriesAndLiquor":

@@ -161,4 +161,17 @@ export const guideData = createTRPCRouter({
 
       return { success: true };
     }),
+
+  createCafe: publicProcedure
+    .input(cafeSchema.extend({ guide: z.string() }).omit({ id: true }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+
+      await ctx.prisma.cafe.create({
+        data: { ...input },
+      });
+
+      return { success: true };
+    }),
 });

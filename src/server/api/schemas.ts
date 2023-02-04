@@ -46,6 +46,7 @@ export const cafeSchema = z.object({
   name: z.string(),
   description: z.string(),
   coffeeBeans: z.string(),
+  specialty: z.string(),
   roomToHang: z.string(),
   bakedGoods: z.string(),
   note: z.string(),
