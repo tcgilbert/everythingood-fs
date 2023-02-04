@@ -73,7 +73,15 @@ export const CreateEntry = ({
       case "groceriesAndLiquor":
         return <CreateGroceryAndLiquor refetch={refetch} guide={guide} />;
       case "shops":
-        return <CreateShop refetch={refetch} guide={guide} />;
+        return (
+          <CreateShop
+            setOpen={setOpen}
+            refetch={refetch}
+            guideInput={guideInput}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
+        );
       case "artGalleries":
         return <CreateArtGallery refetch={refetch} guide={guide} />;
       default:

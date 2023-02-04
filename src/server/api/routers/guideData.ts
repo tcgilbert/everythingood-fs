@@ -174,4 +174,17 @@ export const guideData = createTRPCRouter({
 
       return { success: true };
     }),
+
+  createShop: publicProcedure
+    .input(shopSchema.extend({ guide: z.string() }).omit({ id: true }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+
+      await ctx.prisma.shop.create({
+        data: { ...input },
+      });
+
+      return { success: true };
+    }),
 });
