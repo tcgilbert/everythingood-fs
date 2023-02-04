@@ -1,13 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  ArtGallery,
-  BakeryAndDessert,
-  Bar,
-  Cafe,
-  GroceryAndLiquor,
-  Restaurant,
-  Shop,
-} from "@prisma/client";
+import { Restaurant } from "@prisma/client";
 import { Fragment, useState } from "react";
 import { api } from "../../utils/api";
 
@@ -20,191 +12,11 @@ export const AdminRestaurant = ({ data, refetch }: AdminEntryProps) => {
   const [open, setOpen] = useState(false);
   const [modalInputs, setModalInputs] = useState({ ...data });
   const { name } = data;
-  console.log(data);
   const { mutateAsync: updateEntry } = api.guide.patchRestaurant.useMutation();
 
   const handleClick = () => {
     setOpen(true);
   };
-
-  function handleModalInputs(key: string, value: string) {
-    switch (key) {
-      case "name":
-        return (
-          <div key={key} className=" flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Name:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.name}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, name: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "description":
-        return (
-          <div key={key} className="col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Description:
-            </label>
-            <textarea
-              rows={4}
-              name="comment"
-              id="comment"
-              className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={modalInputs.description}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, description: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "price":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Price:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.price}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, price: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "idealGroupNumber":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Ideal Group Number
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.idealGroupNumber}
-              onChange={(e) => {
-                setModalInputs({
-                  ...modalInputs,
-                  idealGroupNumber: e.target.value,
-                });
-              }}
-            />
-          </div>
-        );
-      case "bestThingOnTheMenu":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Best Thing on the Menu:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.bestThingOnTheMenu}
-              onChange={(e) => {
-                setModalInputs({
-                  ...modalInputs,
-                  bestThingOnTheMenu: e.target.value,
-                });
-              }}
-            />
-          </div>
-        );
-      case "idealMeal":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Ideal Meal:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.idealMeal}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, idealMeal: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "alsoGreat":
-        return (
-          <div key={key} className="col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Also Great:
-            </label>
-            <textarea
-              rows={4}
-              name="comment"
-              id="comment"
-              className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={modalInputs.alsoGreat}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, alsoGreat: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "note":
-        return (
-          <div key={key} className="col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Note:
-            </label>
-            <textarea
-              rows={4}
-              name="comment"
-              id="comment"
-              className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-              value={modalInputs.note}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, note: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "link":
-        return (
-          <div key={key} className="col-span-2 flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Link:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.link}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, link: e.target.value });
-              }}
-            />
-          </div>
-        );
-      case "drinkOrder":
-        return (
-          <div key={key} className="flex flex-col py-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Drink Order:
-            </label>
-            <input
-              className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              type="text"
-              value={modalInputs.drinkOrder}
-              onChange={(e) => {
-                setModalInputs({ ...modalInputs, drinkOrder: e.target.value });
-              }}
-            />
-          </div>
-        );
-      default:
-        return null;
-    }
-  }
 
   const handleUpdate = async () => {
     const payload = { ...modalInputs };
@@ -219,24 +31,6 @@ export const AdminRestaurant = ({ data, refetch }: AdminEntryProps) => {
       setModalInputs({ ...data });
     }, 1000);
   };
-
-  function RenderObject(entry: Restaurant) {
-    const movePropertiesToEnd = (obj: Restaurant) => {
-      const { description, alsoGreat, note, ...rest } = obj;
-      return { ...rest, description, alsoGreat, note };
-    };
-
-    const updatedObj = movePropertiesToEnd(entry);
-
-    return (
-      <>
-        {Object.entries(updatedObj).map(([key, value]) =>
-          handleModalInputs(key, value)
-        )}
-      </>
-    );
-  }
-
   return (
     <div className="col-span-1 mb-2 overflow-hidden border border-gray-100 bg-white shadow sm:rounded-lg">
       <div className="flex items-center justify-between p-2">
@@ -277,11 +71,162 @@ export const AdminRestaurant = ({ data, refetch }: AdminEntryProps) => {
               >
                 <Dialog.Panel className="relative w-3/4 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all">
                   <div className="grid grid-cols-2 gap-2">
-                    {data && RenderObject(data)}
+                    <div className=" flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Name:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.name}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            name: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Price:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.price}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            price: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Ideal Group Number:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.idealGroupNumber}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            idealGroupNumber: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Drink Order:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.drinkOrder}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            drinkOrder: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className=" flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Best Thing on the Menu:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.bestThingOnTheMenu}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            bestThingOnTheMenu: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className=" flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Link:
+                      </label>
+                      <input
+                        className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        type="text"
+                        value={modalInputs.link}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            link: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="col-span-2 flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Also Great:
+                      </label>
+                      <textarea
+                        rows={4}
+                        name="comment"
+                        id="comment"
+                        className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        value={modalInputs.alsoGreat}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            alsoGreat: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
+                    <div className="col-span-2 flex flex-col py-1">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Description:
+                      </label>
+                      <textarea
+                        rows={4}
+                        name="comment"
+                        id="comment"
+                        className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        value={modalInputs.description}
+                        onChange={(e) => {
+                          setModalInputs({
+                            ...modalInputs,
+                            description: e.target.value,
+                          });
+                        }}
+                      />
+                    </div>
                   </div>
+
+                  <div className="col-span-2 flex flex-col py-1">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Note:
+                    </label>
+                    <textarea
+                      rows={4}
+                      name="comment"
+                      id="comment"
+                      className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      value={modalInputs.note}
+                      onChange={(e) => {
+                        setModalInputs({
+                          ...modalInputs,
+                          note: e.target.value,
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className="py-2" />
                   <button
                     onClick={handleUpdate}
-                    className=" my-3 rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                    className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
                   >
                     Save
                   </button>
