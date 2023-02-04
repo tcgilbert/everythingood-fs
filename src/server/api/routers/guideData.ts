@@ -217,4 +217,17 @@ export const guideData = createTRPCRouter({
 
       return { success: true };
     }),
+
+  createArtGallery: publicProcedure
+    .input(artGallerySchema.extend({ guide: z.string() }).omit({ id: true }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+
+      await ctx.prisma.artGallery.create({
+        data: { ...input },
+      });
+
+      return { success: true };
+    }),
 });

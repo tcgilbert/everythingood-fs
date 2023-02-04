@@ -99,7 +99,15 @@ export const CreateEntry = ({
           />
         );
       case "artGalleries":
-        return <CreateArtGallery refetch={refetch} guide={guide} />;
+        return (
+          <CreateArtGallery
+            setOpen={setOpen}
+            refetch={refetch}
+            guideInput={guideInput}
+            setGuide={setGuide}
+            setDisplayed={setDisplayed}
+          />
+        );
       default:
         null;
     }
