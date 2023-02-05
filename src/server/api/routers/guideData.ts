@@ -285,4 +285,26 @@ export const guideData = createTRPCRouter({
       });
       return { success: true };
     }),
+
+  deleteGroceryAndLiquor: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.groceryAndLiquor.delete({
+        where: { id: input.id },
+      });
+      return { success: true };
+    }),
+
+  deleteShop: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.shop.delete({
+        where: { id: input.id },
+      });
+      return { success: true };
+    }),
 });
