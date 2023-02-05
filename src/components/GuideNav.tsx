@@ -32,8 +32,8 @@ export const GuideNav = (props: Props) => {
           <option value="cafes">Cafes</option>
           <option value="bakeriesAndDesserts">Bakeries and Dessert</option>
           <option value="shops">Shops</option>
-          <option value="groceriesandliquor">Grocery and Liquor</option>
-          <option value="artgalleries">Art Galleries</option>
+          <option value="groceriesAndLiquor">Grocery and Liquor</option>
+          <option value="artGalleries">Art Galleries</option>
         </select>
       </div>
       <div className="hidden sm:block">
