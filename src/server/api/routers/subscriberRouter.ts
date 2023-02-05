@@ -1,4 +1,3 @@
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
@@ -13,7 +12,6 @@ export const subscriberRouter = createTRPCRouter({
       });
 
       if (subscriber) {
-        console.log("subscriber already exists");
         return { success: true };
       }
 

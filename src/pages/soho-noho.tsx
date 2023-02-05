@@ -1,6 +1,7 @@
 import { InferGetStaticPropsType, type NextPage } from "next";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { BiUpArrowAlt } from "react-icons/bi";
 import { GuideContent } from "../components/GuideContent";
 import { GuideNav } from "../components/GuideNav";
 import SohoNohoMap from "../public/sohonoho-map.jpg";
@@ -19,6 +20,28 @@ export const getStaticProps = async () => {
 
 const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [displayed, setDisplayed] = useState("restaurants");
+  const [showButton, setShowButton] = useState(false);
+  const elementRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (elementRef.current) {
+        const rect = elementRef.current.getBoundingClientRect();
+        setShowButton(rect.bottom <= 0);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [elementRef]);
+
+  const handleClick = () => {
+    if (elementRef.current) {
+      elementRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
       {/* intro */}
@@ -159,8 +182,21 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </p>
         </div>
       </div>
+      <div ref={elementRef} className="" />
       <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
-      <div className="my-3" />
+      <div className="py-3" />
+      {showButton ? (
+        <button
+          onClick={handleClick}
+          className="hover:scale-98 fixed right-10 bottom-5 cursor-pointer rounded-lg border border-gray-500 bg-white p-3 text-black opacity-100 shadow-xl transition-opacity duration-300 ease-in hover:translate-x-[.05rem] hover:translate-y-[.05rem] hover:transform hover:opacity-100 hover:shadow-sm"
+        >
+          <BiUpArrowAlt className="text-4xl text-black" />
+        </button>
+      ) : (
+        <button className="hover:scale-98 fixed right-10 bottom-5 cursor-default rounded-lg border border-gray-500 bg-white p-3 text-black opacity-0 shadow-xl transition-opacity duration-300 ease-in">
+          <BiUpArrowAlt className="text-4xl text-black" />
+        </button>
+      )}
       <GuideContent displayed={displayed} data={data} />
     </div>
   );
