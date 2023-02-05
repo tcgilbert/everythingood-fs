@@ -6,7 +6,7 @@ import { getStaticGuideData } from "../server/queries/guideData";
 import { BiUpArrowAlt } from "react-icons/bi";
 
 // components
-import { GuideNav } from "../components/GuideNav";
+import { GuideNav } from "../components/RecsNav";
 import { GuideContent } from "../components/GuideContent";
 
 export const getStaticProps = async () => {

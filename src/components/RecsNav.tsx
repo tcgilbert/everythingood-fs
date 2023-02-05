@@ -5,7 +5,7 @@ interface Props {
   setDisplayed: Dispatch<SetStateAction<string>>;
 }
 
-export const GuideNav = (props: Props) => {
+export const RecsNav = (props: Props) => {
   const handleClass = (name: string) => {
     if (name === props.displayed) {
       return "w-1/4 border-b-2 border-red-500 py-4 px-1 text-center text-sm font-medium text-red-600";

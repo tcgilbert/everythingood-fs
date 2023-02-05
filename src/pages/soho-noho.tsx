@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BiUpArrowAlt } from "react-icons/bi";
 import { GuideContent } from "../components/GuideContent";
-import { GuideNav } from "../components/GuideNav";
+import { RecsNav } from "../components/RecsNav";
 import SohoNohoMap from "../public/sohonoho-map.jpg";
 
 import { getStaticGuideData } from "../server/queries/guideData";
@@ -183,7 +183,7 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
       </div>
       <div ref={elementRef} className="" />
-      <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
+      <RecsNav displayed={displayed} setDisplayed={setDisplayed} />
       <div className="py-3" />
       {showButton ? (
         <button

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { getStaticGuideData } from "../server/queries/guideData";
 
 // components
-import { GuideNav } from "../components/GuideNav";
+import { RecsNav } from "../components/RecsNav";
 import { GuideContent } from "../components/GuideContent";
 import { BiUpArrowAlt } from "react-icons/bi";
 
@@ -189,7 +189,7 @@ const NolitaChinatownLittleItaly = ({
         </div>
       </div>
       <div ref={elementRef} className="" />
-      <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
+      <RecsNav displayed={displayed} setDisplayed={setDisplayed} />
       <div className="py-3" />
       {showButton ? (
         <button
