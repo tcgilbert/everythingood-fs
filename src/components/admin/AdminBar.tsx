@@ -223,7 +223,7 @@ export const AdminBar = ({ data, refetch }: AdminEntryProps) => {
   };
 
   return (
-    <div className="col-span-1 mb-2 overflow-hidden border border-gray-100 bg-white shadow sm:rounded-lg">
+    <div className="col-span-1 mb-2 overflow-hidden border border-gray-100 bg-white py-1 shadow sm:rounded-lg">
       <div className="flex items-center justify-between p-2">
         <h3 className="font-robo text-2xl font-medium leading-6 text-gray-900">
           {name}
