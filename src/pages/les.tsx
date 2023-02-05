@@ -29,7 +29,7 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <h1 className="pt-5 text-center font-eb text-6xl font-bold">
           Everything Good
         </h1>
-        <p className="mt-3 text-center font-robo text-2xl font-bold">
+        <p className="mt-3 text-center font-robo text-2xl font-normal">
           on the Lower East Side
         </p>
         <div className="px-4 py-5 sm:p-6">

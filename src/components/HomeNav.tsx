@@ -41,7 +41,7 @@ export const HomeNav = () => {
         in Soho and Noho
       </Link>
       <Link
-        href="/nolita-chinatown-little-italy"
+        href="/nolita-chinatown-littleitaly"
         className="text-md rounded-md border border-red-100 bg-red-100 px-3 py-3 text-center font-medium text-red-700 hover:border-red-700"
       >
         in Nolita, Chinatown, and Little Italy
