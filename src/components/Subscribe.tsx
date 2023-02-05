@@ -51,6 +51,9 @@ export const Subscribe = ({ setOpen, setShow }: SubscribeProps) => {
             await createSubscriber({ email });
             setShow(true);
             setOpen(false);
+            setTimeout(() => {
+              setShow(false);
+            }, 3000);
           }}
         >
           Subscribe
