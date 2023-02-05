@@ -1,21 +1,26 @@
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
-import { type NextPage } from "next";
+import { Dispatch, SetStateAction, useState } from "react";
+
 import { EB_Garamond, Roboto_Mono } from "@next/font/google";
 import { api } from "../utils/api";
-import { Transition } from "@headlessui/react";
-import { AiOutlineCheckCircle, AiOutlineClose } from "react-icons/ai";
 
 const ebGaramond = EB_Garamond({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 interface SubscribeProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
-  setShow: Dispatch<SetStateAction<boolean>>;
+  setShowNotification: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Subscribe = ({ setOpen, setShow }: SubscribeProps) => {
+export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(false);
   const { mutateAsync: createSubscriber } = api.subscribe.create.useMutation();
+
+  const validateEmail = (email: string) => {
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   return (
     <>
@@ -29,36 +34,42 @@ export const Subscribe = ({ setOpen, setShow }: SubscribeProps) => {
         cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat.
       </p>
       <div className="py-3" />
-      <form className="">
-        <div className="flex flex-col">
-          <input
-            id="email-address"
-            name="email-address"
-            type="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="rounded-md border bg-gray-100 px-5 py-3 placeholder-gray-500 focus:border-blue-500"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className="py-1" />
-        <button
-          type="submit"
-          className="w-full rounded-md border bg-gray-300 px-3 py-3 text-center font-medium text-gray-900 hover:bg-gray-200"
-          onClick={async (e) => {
-            e.preventDefault();
-            await createSubscriber({ email });
-            setShow(true);
-            setOpen(false);
-            setTimeout(() => {
-              setShow(false);
-            }, 3000);
-          }}
-        >
-          Subscribe
-        </button>
-      </form>
+      <div className="flex flex-col">
+        <input
+          id="email-address"
+          name="email-address"
+          type="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="rounded-md border bg-gray-100 px-5 py-3 placeholder-gray-500 focus:border-blue-500"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div className="py-1" />
+      <button
+        type="submit"
+        className="w-full rounded-md border bg-red-500 px-3 py-3 text-center font-medium text-white hover:bg-red-400"
+        onClick={async () => {
+          if (!validateEmail(email)) {
+            setError(true);
+            return;
+          }
+          await createSubscriber({ email });
+          setShowNotification(true);
+          setOpen(false);
+          setTimeout(() => {
+            setShowNotification(false);
+          }, 4000);
+        }}
+      >
+        Subscribe
+      </button>
+      {error && (
+        <span className="italic text-red-600">
+          Please enter a valid email address
+        </span>
+      )}
     </>
   );
 };

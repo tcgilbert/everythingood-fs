@@ -6,7 +6,7 @@ import { AiOutlineCheckCircle, AiOutlineClose } from "react-icons/ai";
 
 export const HomeNav = () => {
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   return (
     <div className="mx-auto grid grid-cols-1 gap-4">
@@ -42,7 +42,7 @@ export const HomeNav = () => {
         <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
           <Transition
-            show={show}
+            show={showNotification}
             as={Fragment}
             enter="transform ease-out duration-300 transition"
             enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
@@ -73,7 +73,7 @@ export const HomeNav = () => {
                       type="button"
                       className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       onClick={() => {
-                        setShow(false);
+                        setShowNotification(false);
                       }}
                     >
                       <span className="sr-only">Close</span>
@@ -113,7 +113,10 @@ export const HomeNav = () => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative w-1/2 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all">
-                  <Subscribe setOpen={setOpen} setShow={setShow} />
+                  <Subscribe
+                    setOpen={setOpen}
+                    setShowNotification={setShowNotification}
+                  />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
