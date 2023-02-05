@@ -193,7 +193,7 @@ export const CreateBar = ({
         onClick={() => {
           handleSubmit();
         }}
-        className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
+        className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 transition duration-150 ease-in-out hover:bg-blue-400 hover:text-white"
       >
         Create Bar Entry
       </button>

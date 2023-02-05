@@ -67,7 +67,7 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
           </h1>
           <button
             onClick={handleDelete}
-            className="rounded-md border bg-red-600 px-11 py-3 text-lg font-medium text-white hover:bg-red-500"
+            className="rounded-md border bg-red-600 px-11 py-3 text-lg font-medium text-white transition duration-150 ease-in-out hover:bg-red-500"
           >
             DELETE
           </button>
@@ -213,7 +213,7 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
           <div className="py-2" />
           <button
             onClick={handleUpdate}
-            className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 hover:bg-blue-400 hover:text-white"
+            className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 transition duration-150 ease-in-out hover:bg-blue-400 hover:text-white"
           >
             Save
           </button>
@@ -231,14 +231,14 @@ export const AdminBakeryAndDessert = ({ data, refetch }: AdminEntryProps) => {
         <div className="grid grid-cols-11">
           <button
             onClick={handleClick}
-            className="col-span-5 rounded-md border border-transparent  px-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+            className="col-span-5 rounded-md border border-transparent  px-2 text-sm font-medium text-gray-700 transition duration-75 ease-in-out hover:bg-gray-100 hover:text-blue-600"
           >
             Edit
           </button>
           <span className="col-span-1 text-center text-gray-300">|</span>
           <button
             onClick={handleDelete}
-            className="col-span-5 rounded-md border border-transparent  px-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-red-500"
+            className="col-span-5 rounded-md border border-transparent  px-2 text-sm font-medium text-gray-700 transition duration-75 ease-in-out hover:bg-gray-100 hover:text-red-500"
           >
             Delete
           </button>
