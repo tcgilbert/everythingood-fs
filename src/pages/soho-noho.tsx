@@ -54,7 +54,7 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             in Soho and Noho
           </p>
           <div className="py-2" />
-          <div className="mx-5 grid grid-cols-3 gap-4">
+          <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <Link
               className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-blue-300 hover:text-blue-700"
               href="/"
