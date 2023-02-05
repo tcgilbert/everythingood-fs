@@ -274,4 +274,15 @@ export const guideData = createTRPCRouter({
       });
       return { success: true };
     }),
+
+  deleteArtGallery: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      console.log("________________\n");
+      await ctx.prisma.artGallery.delete({
+        where: { id: input.id },
+      });
+      return { success: true };
+    }),
 });
