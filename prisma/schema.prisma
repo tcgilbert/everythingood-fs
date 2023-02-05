@@ -115,3 +115,12 @@ model Shop {
 
     @@map("shops")
 }
+
+model Subscriber {
+    id        String    @id @default(cuid())
+    createdAt DateTime? @default(now()) @ignore
+    updatedAt DateTime? @updatedAt @ignore
+    email     String    @unique
+
+    @@map("subscribers")
+}
