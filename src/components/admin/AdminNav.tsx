@@ -55,8 +55,8 @@ export const AdminNav = (props: Props) => {
             <option value="restaurants">Restaurants</option>
             <option value="bars">Bars</option>
             <option value="cafes">Cafes</option>
-            <option value="bakeriesAndDesserts">Bakeries and Dessert</option>
-            <option value="groceriesAndLiquor">Grocery and Liquor</option>
+            <option value="bakeriesAndDesserts">Bakeries & Dessert</option>
+            <option value="groceriesAndLiquor">Grocery & Liquor</option>
             <option value="shops">Shops</option>
             <option value="artGalleries">Art Galleries</option>
           </select>
