@@ -1,74 +1,19 @@
-import { InferGetStaticPropsType } from "next";
-import Image from "next/image";
-import LowerEastSideMap from "../public/les-map.jpg";
-import { useEffect, useRef, useState } from "react";
-import { getStaticGuideData } from "../server/queries/guideData";
-import { BiUpArrowAlt } from "react-icons/bi";
-
-// components
-import { GuideNav } from "../components/RecsNav";
-import { GuideContent } from "../components/GuideContent";
-
-export const getStaticProps = async () => {
-  const data = await getStaticGuideData("les");
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-const BlankPage = ({
-  data,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [displayed, setDisplayed] = useState("restaurants");
-  const [showButton, setShowButton] = useState(false);
-  const elementRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (elementRef.current) {
-        const rect = elementRef.current.getBoundingClientRect();
-        setShowButton(rect.bottom <= 0);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [elementRef]);
-
+const BlankPage = () => {
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div className="py-52" />
-      <div className="mx-auto max-w-3xl">
-        <Image
-          src={LowerEastSideMap}
-          priority={true}
-          alt="Map of the Lower East Side"
-          className="shadow-lg"
-        />
+      <div>
+        <div className="sticky top-0 z-50 h-96 w-full bg-red-500">1</div>
+        <div className="h-96 w-full bg-yellow-400">3</div>
+        <div className="h-96 w-full bg-pink-400">2</div>
+        <div className="h-96 w-full bg-green-500">4</div>
       </div>
-      <div className="py-52" />
-      <div className="mx-auto max-w-3xl">
-        <Image
-          src={LowerEastSideMap}
-          priority={true}
-          alt="Map of the Lower East Side"
-          className="shadow-lg"
-        />
-      </div>
-
-      <GuideNav displayed={displayed} setDisplayed={setDisplayed} />
-      <div ref={elementRef} className="my-3" />
-
-      <button className="">
-        <BiUpArrowAlt className="text-4xl text-black" />
-      </button>
-
-      <GuideContent displayed={displayed} data={data} />
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
+      <div className="h-96 w-full bg-blue-500">4</div>
     </div>
   );
 };
