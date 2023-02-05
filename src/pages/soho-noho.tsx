@@ -57,19 +57,19 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className="mx-5 grid grid-cols-3 gap-4">
             <Link
               className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-blue-300 hover:text-blue-700"
-              href="soho-noho"
+              href="/"
             >
               Home
             </Link>
             <Link
               className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-indigo-300 hover:text-indigo-700"
-              href="soho-noho"
+              href="/les"
             >
               on the Lower East Side
             </Link>
             <Link
               className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-red-300 hover:text-red-700"
-              href="soho-noho"
+              href="/nolita-chinatown-littleitaly"
             >
               in Nolita, Chinatown, and Little Italy
             </Link>

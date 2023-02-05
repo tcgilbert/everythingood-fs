@@ -24,9 +24,9 @@ const Admin: NextPage = () => {
 
   return (
     <>
-      <div className="bg-gray-900 py-2" />
-      <div className="flex items-center justify-between bg-gray-900 px-3">
-        <h2 className="text-3xl font-bold tracking-tight text-white">
+      <div className="bg-white py-2" />
+      <div className="flex items-center justify-between bg-white px-3">
+        <h2 className="text-3xl font-bold tracking-tight">
           Everything Good Admin
           <RiAdminLine className="ml-1 inline h-12" />
         </h2>
@@ -37,20 +37,20 @@ const Admin: NextPage = () => {
             setDisplayed={setDisplayed}
           />
           <Link
-            className="relative -ml-px inline-flex items-center border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-400 hover:text-white focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="relative inline-flex items-center border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out hover:bg-gray-400 hover:text-white focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             href="/"
           >
             Home
           </Link>
           <button
             onClick={() => logout()}
-            className="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-400 hover:text-white focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out hover:bg-gray-400 hover:text-white focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             Logout
           </button>
         </div>
       </div>
-      <div className="bg-gray-900 py-2" />
+      <div className="bg-white py-2" />
       <AdminNav
         guide={guide}
         displayed={displayed}

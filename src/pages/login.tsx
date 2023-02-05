@@ -80,7 +80,7 @@ const Login: NextPage = () => {
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white hover:bg-blue-500"
+                className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white transition duration-150 ease-in-out hover:bg-red-500"
                 onClick={() => handleSubmit()}
               >
                 Sign in

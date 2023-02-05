@@ -49,7 +49,7 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
       <div className="py-1" />
       <button
         type="submit"
-        className="w-full rounded-md border bg-red-500 px-3 py-3 text-center font-medium text-white hover:bg-red-400"
+        className="w-full rounded-md border bg-red-500 px-3 py-3 text-center font-medium text-white transition duration-150 ease-in-out hover:bg-red-400"
         onClick={async () => {
           if (!validateEmail(email)) {
             setError(true);

@@ -12,25 +12,25 @@ export const HomeNav = () => {
     <div className="mx-auto grid grid-cols-1 gap-4">
       <Link
         href="/les"
-        className="text-md rounded-md border border-indigo-100 bg-indigo-100 px-3 py-3 text-center font-medium text-indigo-700 hover:border-indigo-700"
+        className="text-md rounded-md border border-indigo-100 bg-indigo-100 px-3 py-3 text-center font-medium text-indigo-700 transition duration-150 ease-in-out hover:border-indigo-700"
       >
         on the Lower East Side
       </Link>
       <Link
         href="/soho-noho"
-        className="text-md rounded-md border border-green-100 bg-green-100 px-3 py-3 text-center font-medium text-green-700 hover:border-green-700"
+        className="text-md rounded-md border border-green-100 bg-green-100 px-3 py-3 text-center font-medium text-green-700 transition duration-150 ease-in-out hover:border-green-700"
       >
         in Soho and Noho
       </Link>
       <Link
         href="/nolita-chinatown-littleitaly"
-        className="text-md rounded-md border border-red-100 bg-red-100 px-3 py-3 text-center font-medium text-red-700 hover:border-red-700"
+        className="text-md rounded-md border border-red-100 bg-red-100 px-3 py-3 text-center font-medium text-red-700 transition duration-150 ease-in-out hover:border-red-700"
       >
         in Nolita, Chinatown, and Little Italy
       </Link>
       <button
         onClick={() => setOpen(true)}
-        className="text-md rounded-md border bg-gray-100 px-3 py-3 text-center font-medium text-gray-900 hover:border-gray-500"
+        className="text-md rounded-md border bg-gray-100 px-3 py-3 text-center font-medium text-gray-900 transition duration-150 ease-in-out hover:border-gray-500"
       >
         Subscribe to the Newsletter
       </button>

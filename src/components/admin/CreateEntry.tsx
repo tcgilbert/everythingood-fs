@@ -171,7 +171,7 @@ export const CreateEntry = ({
     <>
       <button
         onClick={handleClick}
-        className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-400 hover:text-white"
+        className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out hover:bg-gray-400 hover:text-white"
       >
         Create Entry
       </button>
