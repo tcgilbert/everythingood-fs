@@ -12,21 +12,21 @@ export const AdminNav = (props: Props) => {
     if (name === props.guide) {
       switch (name) {
         case "les":
-          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-200 text-indigo-700";
+          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-100 text-indigo-700";
         case "soho-noho":
-          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-green-200 text-green-700";
+          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-green-100 text-green-700";
         case "nolita-chinatown-littleitaly":
-          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-red-200 text-red-700";
+          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-red-100 text-red-700";
         default:
-          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-200 text-indigo-700";
+          return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium bg-indigo-100 text-indigo-700";
       }
     } else {
-      return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium text-gray-500 hover:cursor-pointer text-gray-500 hover:text-gray-700 hover:bg-gray-100";
+      return "px-3 py-2 font-medium text-sm rounded-md text-center text-sm font-medium text-white hover:cursor-pointer text-gray-500 hover:text-white hover:bg-gray-800";
     }
   };
 
   return (
-    <div className="border-b border-gray-300 bg-white pb-4">
+    <div className="border-b border-gray-900 bg-gray-900 pb-4">
       <div className="ml-2 flex w-3/4 items-center">
         <p className={handleClass("les")} onClick={() => props.setGuide("les")}>
           on the Lower East Side

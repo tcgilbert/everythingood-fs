@@ -80,7 +80,7 @@ const Login: NextPage = () => {
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white hover:bg-blue-500"
                 onClick={() => handleSubmit()}
               >
                 Sign in
@@ -89,30 +89,6 @@ const Login: NextPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {isError && <p className="text4xl text-red-600">Invalid credentials</p>}
-        <label htmlFor="username">Username:</label>
-        <input
-          name="username"
-          type="text"
-          value={input.username}
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          name="password"
-          type="password"
-          value={input.password}
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className="mt-7 border-2 border-red-100 bg-green-400"
-          onClick={() => mutate(input)}
-        >
-          Login
-        </button>
-      </div> */}
     </>
   );
 };

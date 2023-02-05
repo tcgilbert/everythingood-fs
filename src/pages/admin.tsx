@@ -24,9 +24,9 @@ const Admin: NextPage = () => {
 
   return (
     <>
-      <div className="bg-white py-2" />
-      <div className="flex items-center justify-between bg-white px-3">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+      <div className="bg-gray-900 py-2" />
+      <div className="flex items-center justify-between bg-gray-900 px-3">
+        <h2 className="text-3xl font-bold tracking-tight text-white">
           Everything Good Admin
           <RiAdminLine className="ml-1 inline h-12" />
         </h2>
@@ -50,7 +50,7 @@ const Admin: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white py-2" />
+      <div className="bg-gray-900 py-2" />
       <AdminNav
         guide={guide}
         displayed={displayed}
