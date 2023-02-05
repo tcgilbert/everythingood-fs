@@ -49,7 +49,7 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       <div>
         <div className="sticky top-0 z-50 mx-auto rounded-md bg-white shadow-md sm:px-6 lg:px-8">
-          <h1 className="pt-5 text-center font-eb text-6xl font-bold">
+          <h1 className="pt-5 text-center font-eb text-6xl font-medium">
             Everything Good
           </h1>
           <p className="mt-1 text-center font-robo text-2xl font-normal">
