@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { MobileRecsNav } from "./MobileRecsNav";
 
 interface Props {
   displayed: string;
@@ -17,24 +18,10 @@ export const RecsNav = (props: Props) => {
   return (
     <div>
       <div className="sm:hidden">
-        <label htmlFor="tabs" className="sr-only">
-          Select a tab
-        </label>
-        <select
-          id="tabs"
-          name="tabs"
-          className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-          defaultValue="Restaurants"
-          onChange={(e) => props.setDisplayed(e.target.value)}
-        >
-          <option value="restaurants">Restaurants</option>
-          <option value="bars">Bars</option>
-          <option value="cafes">Cafes</option>
-          <option value="bakeriesAndDesserts">Bakeries & Dessert</option>
-          <option value="shops">Shops</option>
-          <option value="groceriesAndLiquor">Grocery & Liquor</option>
-          <option value="artGalleries">Art Galleries</option>
-        </select>
+        <MobileRecsNav
+          displayed={props.displayed}
+          setDisplayed={props.setDisplayed}
+        />
       </div>
       <div className="hidden sm:block">
         <div className="border-b border-t border-gray-400 bg-white">
