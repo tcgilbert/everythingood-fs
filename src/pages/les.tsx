@@ -8,7 +8,6 @@ import { BiUpArrowAlt } from "react-icons/bi";
 // components
 import { RecsNav } from "../components/RecsNav";
 import { GuideContent } from "../components/GuideContent";
-import Link from "next/link";
 import { LoaderLink } from "../components/LoaderLink";
 
 export const getStaticProps = async () => {
