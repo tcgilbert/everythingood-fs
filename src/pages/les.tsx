@@ -9,6 +9,7 @@ import { BiUpArrowAlt } from "react-icons/bi";
 import { RecsNav } from "../components/RecsNav";
 import { GuideContent } from "../components/GuideContent";
 import Link from "next/link";
+import { LoaderLink } from "../components/LoaderLink";
 
 export const getStaticProps = async () => {
   const data = await getStaticGuideData("les");
@@ -24,6 +25,9 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [displayed, setDisplayed] = useState("restaurants");
   const [showButton, setShowButton] = useState(false);
   const elementRef = useRef<HTMLInputElement>(null);
+  const [sohoLoading, setSohoLoading] = useState(false);
+  const [homeLoading, setHomeLoading] = useState(false);
+  const [nolitaLoading, setNolitaLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,24 +62,30 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </p>
             <div className="py-2" />
             <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <Link
-                className="rounded-md bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-gray-200"
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-gray-200"
                 href="/"
+                loading={homeLoading}
+                setLoading={setHomeLoading}
               >
                 Home
-              </Link>
-              <Link
-                className="rounded-md bg-green-100 px-3 py-2 text-center text-sm font-medium text-green-700 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-200"
+              </LoaderLink>
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-green-100 px-3 py-2 text-center text-sm font-medium text-green-800 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-200"
                 href="/soho-noho"
+                loading={sohoLoading}
+                setLoading={setSohoLoading}
               >
                 in Soho and Noho
-              </Link>
-              <Link
-                className="rounded-md bg-red-100 px-3 py-2 text-center text-sm font-medium text-red-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-red-200"
+              </LoaderLink>
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-red-100 px-3 py-2 text-center text-sm font-medium text-red-700 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-red-200"
                 href="/nolita-chinatown-littleitaly"
+                loading={nolitaLoading}
+                setLoading={setNolitaLoading}
               >
                 in Nolita, Chinatown, and Little Italy
-              </Link>
+              </LoaderLink>
             </div>
             <div className="py-2" />
           </div>
