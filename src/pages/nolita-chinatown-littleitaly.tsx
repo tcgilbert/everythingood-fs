@@ -8,7 +8,7 @@ import { getStaticGuideData } from "../server/queries/guideData";
 import { RecsNav } from "../components/RecsNav";
 import { GuideContent } from "../components/GuideContent";
 import { BiUpArrowAlt } from "react-icons/bi";
-import Link from "next/link";
+import { LoaderLink } from "../components/LoaderLink";
 
 export const getStaticProps = async () => {
   const data = await getStaticGuideData("nolita-chinatown-littleitaly");
@@ -26,6 +26,9 @@ const NolitaChinatownLittleItaly = ({
   const [displayed, setDisplayed] = useState("restaurants");
   const [showButton, setShowButton] = useState(false);
   const elementRef = useRef<HTMLInputElement>(null);
+  const [homeLoading, setHomeLoading] = useState(false);
+  const [sohoLoading, setSohoLoading] = useState(false);
+  const [lesLoading, setLesLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,35 +53,43 @@ const NolitaChinatownLittleItaly = ({
   return (
     <>
       <div>
-        <div className="sticky top-0 z-50 mx-auto rounded-md bg-white shadow-md sm:px-6 lg:px-8">
-          <h1 className="pt-5 text-center font-eb text-6xl font-medium">
-            Everything Good
-          </h1>
-          <p className="mt-1 text-center font-robo text-2xl font-normal">
-            in Nolita, Chinatown, and Little Italy
-          </p>
-          <div className="py-2" />
-          <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-blue-300 hover:text-blue-700"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-indigo-300 hover:text-indigo-700"
-              href="/les"
-            >
-              on the Lower East Side
-            </Link>
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-300 hover:text-green-700"
-              href="/soho-noho"
-            >
-              in Soho and Noho
-            </Link>
+        <div className="sticky top-0 z-50 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="rounded-b-md bg-white shadow-md">
+            <h1 className="pt-5 text-center font-eb text-6xl font-medium">
+              Everything Good
+            </h1>
+            <p className="mt-1 text-center font-robo text-2xl font-normal">
+              in Nolita, Chinatown, and Little Italy
+            </p>
+            <div className="py-2" />
+            <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-gray-200"
+                href="/"
+                loading={homeLoading}
+                setLoading={setHomeLoading}
+              >
+                Home
+              </LoaderLink>
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-indigo-100 px-3 py-2 text-center text-sm font-medium text-indigo-700 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-indigo-200"
+                href="/les"
+                loading={lesLoading}
+                setLoading={setLesLoading}
+              >
+                on the Lower East Side
+              </LoaderLink>
+              <LoaderLink
+                className="flex items-center justify-center rounded-md bg-green-100 px-3 py-2 text-center text-sm font-medium text-green-800 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-200"
+                href="/soho-noho"
+                loading={sohoLoading}
+                setLoading={setSohoLoading}
+              >
+                in Soho and Noho
+              </LoaderLink>
+            </div>
+            <div className="py-2" />
           </div>
-          <div className="py-2" />
         </div>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* intro */}

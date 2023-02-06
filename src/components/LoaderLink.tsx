@@ -20,7 +20,7 @@ export const LoaderLink = ({
     if (loading) {
       return (
         <span>
-          <CgSpinner className="animate-spin text-2xl" />
+          <CgSpinner className="animate-spin text-xl" />
         </span>
       );
     } else {
