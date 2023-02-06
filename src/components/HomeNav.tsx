@@ -1,33 +1,43 @@
 import { Transition, Dialog } from "@headlessui/react";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import { Subscribe } from "./Subscribe";
 import { AiOutlineCheckCircle, AiOutlineClose } from "react-icons/ai";
 
+import { LoaderLink } from "./LoaderLink";
+
 export const HomeNav = () => {
   const [open, setOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [sohoLoading, setSohoLoading] = useState(false);
+  const [lesLoading, setLesLoading] = useState(false);
+  const [nolitaLoading, setNolitaLoading] = useState(false);
 
   return (
     <div className="mx-auto grid grid-cols-1 gap-4">
-      <Link
+      <LoaderLink
         href="/les"
-        className="text-md rounded-md border border-indigo-100 bg-indigo-100 px-3 py-3 text-center font-medium text-indigo-700 transition duration-150 ease-in-out hover:border-indigo-700"
+        className="text-md flex items-center justify-center rounded-md border border-indigo-100 bg-indigo-100 px-3 py-3 text-center font-medium text-indigo-700 transition duration-150 ease-in-out hover:border-indigo-700"
+        loading={lesLoading}
+        setLoading={setLesLoading}
       >
         on the Lower East Side
-      </Link>
-      <Link
+      </LoaderLink>
+      <LoaderLink
         href="/soho-noho"
-        className="text-md rounded-md border border-green-100 bg-green-100 px-3 py-3 text-center font-medium text-green-700 transition duration-150 ease-in-out hover:border-green-700"
+        className="text-md flex items-center justify-center rounded-md border border-green-100 bg-green-100 px-3 py-3 text-center font-medium text-green-700 transition duration-150 ease-in-out hover:border-green-700"
+        loading={sohoLoading}
+        setLoading={setSohoLoading}
       >
         in Soho and Noho
-      </Link>
-      <Link
+      </LoaderLink>
+      <LoaderLink
         href="/nolita-chinatown-littleitaly"
-        className="text-md rounded-md border border-red-100 bg-red-100 px-3 py-3 text-center font-medium text-red-700 transition duration-150 ease-in-out hover:border-red-700"
+        className="text-md flex items-center justify-center rounded-md border border-red-100 bg-red-100 px-3 py-3 text-center font-medium text-red-700 transition duration-150 ease-in-out hover:border-red-700"
+        loading={nolitaLoading}
+        setLoading={setNolitaLoading}
       >
         in Nolita, Chinatown, and Little Italy
-      </Link>
+      </LoaderLink>
       <button
         onClick={() => setOpen(true)}
         className="text-md rounded-md border bg-gray-100 px-3 py-3 text-center font-medium text-gray-900 transition duration-150 ease-in-out hover:border-gray-500"
