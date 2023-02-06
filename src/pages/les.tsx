@@ -48,39 +48,41 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <div>
-        <div className="sticky top-0 z-50 mx-auto rounded-md bg-white shadow-md sm:px-6 lg:px-8">
-          <h1 className="pt-5 text-center font-eb text-6xl font-medium">
-            Everything Good
-          </h1>
-          <p className="mt-1 text-center font-robo text-2xl font-normal">
-            on the Lower East Side
-          </p>
-          <div className="py-2" />
-          <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-blue-300 hover:text-blue-700"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-300 hover:text-green-700"
-              href="/soho-noho"
-            >
-              in Soho and Noho
-            </Link>
-            <Link
-              className="rounded-md bg-gray-200 px-3 py-2 text-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-red-300 hover:text-red-700"
-              href="/nolita-chinatown-littleitaly"
-            >
-              in Nolita, Chinatown, and Little Italy
-            </Link>
+        <div className="sticky top-0 z-50 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="rounded-b-md bg-white shadow-md">
+            <h1 className="pt-5 text-center font-eb text-6xl font-medium">
+              Everything Good
+            </h1>
+            <p className="mt-1 text-center font-robo text-2xl font-normal">
+              on the Lower East Side
+            </p>
+            <div className="py-2" />
+            <div className="mx-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <Link
+                className="rounded-md bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-gray-200"
+                href="/"
+              >
+                Home
+              </Link>
+              <Link
+                className="rounded-md bg-green-100 px-3 py-2 text-center text-sm font-medium text-green-700 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-green-200"
+                href="/soho-noho"
+              >
+                in Soho and Noho
+              </Link>
+              <Link
+                className="rounded-md bg-red-100 px-3 py-2 text-center text-sm font-medium text-red-500 transition duration-150 ease-in-out hover:cursor-pointer hover:bg-red-200"
+                href="/nolita-chinatown-littleitaly"
+              >
+                in Nolita, Chinatown, and Little Italy
+              </Link>
+            </div>
+            <div className="py-2" />
           </div>
-          <div className="py-2" />
         </div>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="py-3" />
-          <div className="overflow-hidden rounded-t-lg bg-white shadow">
+          <div className="rounded-t-lg bg-white shadow">
             <div className="px-4 py-5 sm:p-6">
               <p className="text-center font-eb text-lg">
                 <span className="font-eb text-red-500">Don’t worry. </span>
