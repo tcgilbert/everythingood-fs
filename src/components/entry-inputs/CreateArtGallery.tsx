@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import { api } from "../../utils/api";
 import { guideText } from "../../lib/guideText";
 
@@ -88,7 +88,7 @@ export const CreateArtGallery = ({
       <div className="py-2" />
       <button
         onClick={() => {
-          handleSubmit();
+          void handleSubmit();
         }}
         className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 transition duration-150 ease-in-out hover:bg-blue-400 hover:text-white"
       >
