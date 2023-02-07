@@ -178,7 +178,7 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
                 {
-                  " OK, OK, OK. First off, when I say the LES and Two Bridges I mean the space outlined in black above. East of The Bowery. South of Houston. West of the FDR. And North of the Brooklyn Bridge. I&rsquo;m not saying you didn't know that. But now we definitely 100% all know that. "
+                  " OK, OKK, OK. First off, when I say the LES and Two Bridges I mean the space outlined in black above. East of The Bowery. South of Houston. West of the FDR. And North of the Brooklyn Bridge. I&rsquo;m not saying you didn't know that. But now we definitely 100% all know that. "
                 }
               </p>
               <div className="py-3" />
