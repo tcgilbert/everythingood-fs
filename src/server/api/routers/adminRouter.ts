@@ -44,7 +44,7 @@ export const adminRouter = createTRPCRouter({
         message: "Invalid username or password",
       });
     }),
-  logout: publicProcedure.mutation(async ({ ctx }) => {
+  logout: publicProcedure.mutation(({ ctx }) => {
     console.log("logout_________________");
 
     const { res } = ctx;

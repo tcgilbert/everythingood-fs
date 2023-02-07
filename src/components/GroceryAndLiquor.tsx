@@ -1,4 +1,4 @@
-import { GroceryAndLiquor } from "@prisma/client";
+import { type GroceryAndLiquor } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 
 export const GroceryAndLiquorComponent = (props: Props) => {
   const { groceryAndLiquor } = props;
-  const { name, description, guide, link } = groceryAndLiquor;
+  const { name, description } = groceryAndLiquor;
 
   return (
     <div className="col-span-1 mb-2 overflow-hidden bg-white shadow sm:rounded-lg">

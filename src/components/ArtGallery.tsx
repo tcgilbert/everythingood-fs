@@ -1,4 +1,4 @@
-import { ArtGallery } from "@prisma/client";
+import { type ArtGallery } from "@prisma/client";
 
 interface Props {
   artGalleries: ArtGallery[];
@@ -20,6 +20,7 @@ export const ArtGalleryComponent = (props: Props) => {
         {artGalleries.map((ele) => {
           return (
             <a
+              key={ele.id}
               href={ele.link}
               className="block font-robo text-xl font-medium leading-6 text-gray-900 hover:cursor-pointer hover:text-red-600"
             >

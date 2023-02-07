@@ -1,4 +1,4 @@
-import { Restaurant } from "@prisma/client";
+import { type Restaurant } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
@@ -13,10 +13,8 @@ export const RestaurantComponent = (props: Props) => {
     bestThingOnTheMenu,
     description,
     drinkOrder,
-    guide,
     idealGroupNumber,
     idealMeal,
-    link,
     note,
     price,
   } = restaurant;

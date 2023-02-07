@@ -1,4 +1,4 @@
-import { Bar } from "@prisma/client";
+import { type Bar } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
@@ -12,9 +12,7 @@ export const BarComponent = (props: Props) => {
     description,
     drinkSpecialty,
     food,
-    guide,
     idealGroupNumber,
-    link,
     note,
     price,
   } = bar;

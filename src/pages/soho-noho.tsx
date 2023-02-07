@@ -1,6 +1,5 @@
-import { InferGetStaticPropsType, type NextPage } from "next";
+import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BiUpArrowAlt } from "react-icons/bi";
 import SohoNohoMap from "../public/sohonoho-map.jpg";
@@ -175,6 +174,7 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   href="https://www.instagram.com/alex_delany/"
                   className="font-eb text-red-500 underline"
                   target={"_blank"}
+                  rel="noreferrer"
                 >
                   — Alex Delany
                 </a>

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 
 import { EB_Garamond, Roboto_Mono } from "@next/font/google";
 import { api } from "../utils/api";
@@ -17,7 +17,7 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
   const { mutateAsync: createSubscriber } = api.subscribe.create.useMutation();
 
   const validateEmail = (email: string) => {
-    var re =
+    const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
@@ -61,6 +61,7 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
           setTimeout(() => {
             setShowNotification(false);
           }, 4000);
+          return;
         }}
       >
         Subscribe

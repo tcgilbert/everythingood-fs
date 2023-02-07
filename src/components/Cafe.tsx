@@ -1,4 +1,4 @@
-import { Cafe } from "@prisma/client";
+import { type Cafe } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
@@ -7,16 +7,7 @@ interface Props {
 
 export const CafeComponent = (props: Props) => {
   const { cafe } = props;
-  const {
-    name,
-    description,
-    guide,
-    link,
-    note,
-    bakedGoods,
-    coffeeBeans,
-    roomToHang,
-  } = cafe;
+  const { name, description, note, bakedGoods, coffeeBeans, roomToHang } = cafe;
 
   return (
     <div className="col-span-1 mb-2 overflow-hidden bg-white shadow sm:rounded-lg">

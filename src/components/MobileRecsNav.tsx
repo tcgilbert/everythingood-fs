@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import { type Dispatch, Fragment, type SetStateAction, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { AiOutlineCheck, AiOutlineDown } from "react-icons/ai";
 
@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const MobileRecsNav = (props: Props) => {
-  const [selected, setSelected] = useState(props.displayed);
   const handleMobileText = () => {
     switch (props.displayed) {
       case "restaurants":

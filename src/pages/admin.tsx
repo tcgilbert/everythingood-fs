@@ -16,7 +16,7 @@ const Admin: NextPage = () => {
   // gets data
   const { data, isLoading, refetch } = api.guide.getAll.useQuery({ guide });
   // logs out
-  const { mutate: logout, isError } = api.admin.logout.useMutation({
+  const { mutate: logout } = api.admin.logout.useMutation({
     onSuccess: () => {
       router.push("/login");
     },

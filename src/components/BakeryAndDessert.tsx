@@ -1,4 +1,4 @@
-import { BakeryAndDessert } from "@prisma/client";
+import { type BakeryAndDessert } from "@prisma/client";
 import { BiMap } from "react-icons/bi";
 
 interface Props {
@@ -10,8 +10,6 @@ export const BakeryAndDessertComponent = (props: Props) => {
   const {
     name,
     description,
-    guide,
-    link,
     note,
     alsoGreat,
     bestThingOnTheMenu,
