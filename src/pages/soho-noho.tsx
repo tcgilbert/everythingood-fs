@@ -194,10 +194,9 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <div className="py-3" />
 
               <p className="text-center font-eb text-lg">
-                OK, OK, OK. First off, when I say NoHo and SoHo, I mean the
-                space outlined in black above, including Hudson Square.
-                I&rsquo;m not saying you didn't know where these neighborhoods
-                are. But now we definitely 100% all know where they are.
+                {
+                  "OK, OK, OK. First off, when I say NoHo and SoHo, I mean the space outlined in black above, including Hudson Square. I&rsquo;m not saying you didn't know where these neighborhoods are. But now we definitely 100% all know where they are. "
+                }
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
