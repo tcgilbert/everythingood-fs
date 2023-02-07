@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import { type Dispatch, Fragment, type SetStateAction, useState } from "react";
 
 import { CreateRestaurant } from "../entry-inputs/CreateRestaurant";
 import { CreateBar } from "../entry-inputs/CreateBar";

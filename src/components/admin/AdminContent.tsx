@@ -6,7 +6,7 @@ import { AdminGroceryAndLiquor } from "./AdminGroceryAndLiquor";
 import { AdminShop } from "./AdminShop";
 import { AdminArtGallery } from "./AdminArtGallery";
 
-import {
+import type {
   ArtGallery,
   BakeryAndDessert,
   Bar,

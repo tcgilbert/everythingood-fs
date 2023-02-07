@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { ArtGallery } from "@prisma/client";
+import type { ArtGallery } from "@prisma/client";
 import { Fragment, useState } from "react";
 import { api } from "../../utils/api";
 
@@ -25,7 +25,6 @@ export const AdminArtGallery = ({ data, refetch }: AdminEntryProps) => {
   const handleDelete = async () => {
     if (deleteSelected) {
       // delete entry
-      console.log("deleting!!!!!!");
       await deleteEntry({ id: data.id });
       setOpen(false);
       refetch();
@@ -64,7 +63,9 @@ export const AdminArtGallery = ({ data, refetch }: AdminEntryProps) => {
             <span className="italic">{name}</span>?
           </h1>
           <button
-            onClick={handleDelete}
+            onClick={() => {
+              void handleDelete();
+            }}
             className="rounded-md border bg-red-600 px-11 py-3 text-lg font-medium text-white transition duration-150 ease-in-out hover:bg-red-500"
           >
             DELETE
@@ -110,7 +111,7 @@ export const AdminArtGallery = ({ data, refetch }: AdminEntryProps) => {
           </div>
           <div className="py-2" />
           <button
-            onClick={handleUpdate}
+            onClick={() => void handleUpdate()}
             className="w-full rounded-md border border-transparent bg-blue-200 py-2 px-4 text-sm font-medium text-blue-700 transition duration-150 ease-in-out hover:bg-blue-400 hover:text-white"
           >
             Save
@@ -135,7 +136,7 @@ export const AdminArtGallery = ({ data, refetch }: AdminEntryProps) => {
           </button>
           <span className="col-span-1 text-center text-gray-300">|</span>
           <button
-            onClick={handleDelete}
+            onClick={() => void handleDelete()}
             className="col-span-5 rounded-md border border-transparent px-2 text-sm font-medium text-gray-700 transition duration-75 ease-in-out hover:bg-gray-100 hover:text-red-500"
           >
             Delete

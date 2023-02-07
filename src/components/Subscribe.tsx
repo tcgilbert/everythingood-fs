@@ -22,6 +22,24 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
     return re.test(String(email).toLowerCase());
   };
 
+  const handleSubscribe = async () => {
+    if (!validateEmail(email)) {
+      setError(true);
+      return;
+    }
+    try {
+      const subscriber = await createSubscriber({ email });
+      setShowNotification(true);
+      setOpen(false);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 4000);
+      return subscriber;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <h2 className={`${ebGaramond.className} text-center text-3xl font-bold`}>
@@ -50,18 +68,8 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
       <button
         type="submit"
         className="w-full rounded-md border bg-red-500 px-3 py-3 text-center font-medium text-white transition duration-150 ease-in-out hover:bg-red-400"
-        onClick={async () => {
-          if (!validateEmail(email)) {
-            setError(true);
-            return;
-          }
-          await createSubscriber({ email });
-          setShowNotification(true);
-          setOpen(false);
-          setTimeout(() => {
-            setShowNotification(false);
-          }, 4000);
-          return;
+        onClick={() => {
+          void handleSubscribe();
         }}
       >
         Subscribe
