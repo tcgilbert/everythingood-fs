@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType } from "next";
+import type { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import LowerEastSideMap from "../public/les-map.jpg";
 import { useEffect, useRef, useState } from "react";
@@ -94,13 +94,15 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className="rounded-t-lg bg-white shadow">
             <div className="px-4 py-5 sm:p-6">
               <p className="text-center font-eb text-lg">
-                <span className="font-eb text-red-500">Don’t worry. </span>
+                <span className="font-eb text-red-500">
+                  Don&rsquo;t worry.{" "}
+                </span>
                 This is not a screenplay about a Gen Z creative or a pitch about
                 a Dimes Square reality TV show or a press release about a luxury
                 brand making $900 bags from old takeout menus or something
                 useless like that.{" "}
                 <span className="font-eb text-red-500">
-                  It’s (hopefully) not eye roll material.
+                  It&rsquo;s (hopefully) not eye roll material.
                 </span>
               </p>
               <div className="py-3" />
@@ -122,30 +124,30 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   {" "}
                   There will be many more.{" "}
                 </span>
-                I’m the only person writing and gathering these recommendations.
-                If you do not see a spot (well-known or not) on this list, it
-                might be because I don’t know it. But most likely, it’s because
-                I don’t really like it.
+                I&rsquo;m the only person writing and gathering these
+                recommendations. If you do not see a spot (well-known or not) on
+                this list, it might be because I don&rsquo;t know it. But most
+                likely, it&rsquo;s because I don&rsquo;t really like it.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                As you may have noticed, this guide is not a design object. It’s
-                a Google Doc. I could have tried harder to make this look cool,
-                but I didn’t. TBH, my Adobe Suite subscription expired. There
-                are some iPhone photos to give added flavor to these
-                recommendations, which are broken down by categories and
+                As you may have noticed, this guide is not a design object.
+                It&rsquo;s a Google Doc. I could have tried harder to make this
+                look cool, but I didn&rsquo;t. TBH, my Adobe Suite subscription
+                expired. There are some iPhone photos to give added flavor to
+                these recommendations, which are broken down by categories and
                 presented with information I think is important to know about
                 each spot. This is a long list. More is (allegedly) more.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
                 I thought about charging a small fee for this information, but
-                instead, for the first installment, I’d love it if you could
-                make a donation to the Henry Street Settlement, an amazing
+                instead, for the first installment, I&rsquo;d love it if you
+                could make a donation to the Henry Street Settlement, an amazing
                 charity in the LES that provides childcare, cultural
                 programming, housing, art classes, health care, and social
-                services for LES residents in need. If you’re using this list,
-                please donate!
+                services for LES residents in need. If you&rsquo;re using this
+                list, please donate!
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
@@ -159,6 +161,7 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   href="https://www.instagram.com/alex_delany/"
                   className="font-eb text-red-500 underline"
                   target={"_blank"}
+                  rel="noreferrer"
                 >
                   — Alex Delany
                 </a>
@@ -176,14 +179,16 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <p className="text-center font-eb text-lg">
                 OK, OK, OK. First off, when I say the LES and Two Bridges I mean
                 the space outlined in black above. East of The Bowery. South of
-                Houston. West of the FDR. And North of the Brooklyn Bridge. I’m
-                not saying you didn't know that. But now we definitely 100% all
-                know that.{" "}
+                Houston. West of the FDR. And North of the Brooklyn Bridge.
+                I&rsquo;m not saying you didn't know that. But now we definitely
+                100% all know that.{" "}
               </p>
+
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                Also, if you’re like—WAIT, there should be a Google Map with all
-                these spots on it, dude!—do not fear. That map exists at{" "}
+                Also, if you&rsquo;re like—WAIT, there should be a Google Map
+                with all these spots on it, dude!—do not fear. That map exists
+                at{" "}
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -192,8 +197,8 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 >
                   this link right here
                 </a>
-                , so you can have it handy whenever you’re running around living
-                your life.{" "}
+                , so you can have it handy whenever you&rsquo;re running around
+                living your life.{" "}
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
@@ -205,7 +210,8 @@ const Les = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                Great. Now that we’re all on the same page, let’s get into it…
+                Great. Now that we&rsquo;re all on the same page, let&rsquo;s
+                get into it…
               </p>
             </div>
           </div>

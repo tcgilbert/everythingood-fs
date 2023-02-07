@@ -14,13 +14,19 @@ const Admin: NextPage = () => {
   const router = useRouter();
 
   // gets data
-  const { data, isLoading, refetch } = api.guide.getAll.useQuery({ guide });
+  const { data, isLoading, refetch, error } = api.guide.getAll.useQuery({
+    guide,
+  });
   // logs out
   const { mutate: logout } = api.admin.logout.useMutation({
     onSuccess: () => {
-      router.push("/login");
+      void router.push("/login");
     },
   });
+
+  if (error) {
+    return <div>error fetching from backend</div>;
+  }
 
   return (
     <>
@@ -32,7 +38,7 @@ const Admin: NextPage = () => {
         </h2>
         <div className="flex justify-between">
           <CreateEntry
-            refetch={refetch}
+            refetch={() => void refetch()}
             setGuide={setGuide}
             setDisplayed={setDisplayed}
           />
@@ -62,7 +68,11 @@ const Admin: NextPage = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <AdminContent data={data!} displayed={displayed} refetch={refetch} />
+        <AdminContent
+          data={data}
+          displayed={displayed}
+          refetch={() => void refetch()}
+        />
       )}
     </>
   );

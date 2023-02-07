@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType } from "next";
+import { type InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BiUpArrowAlt } from "react-icons/bi";
@@ -96,13 +96,15 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="px-4 py-5 sm:p-6">
               <p className="text-center font-eb text-lg">
-                <span className="font-eb text-red-500">Don’t worry. </span>
-                This is not a list of the best spots to get street-styled or a
-                manual for bribing the Balthazar maître d’ or best practices for
-                securing NikeLab releases or a map of where the Jenners and
-                Hadids have apartments.{" "}
                 <span className="font-eb text-red-500">
-                  It’s (hopefully) not eye roll material.
+                  Don&rsquo;t worry.{" "}
+                </span>
+                This is not a list of the best spots to get street-styled or a
+                manual for bribing the Balthazar maître d&rsquo; or best
+                practices for securing NikeLab releases or a map of where the
+                Jenners and Hadids have apartments.{" "}
+                <span className="font-eb text-red-500">
+                  It&rsquo;s (hopefully) not eye roll material.
                 </span>
               </p>
               <div className="py-3" />
@@ -117,9 +119,10 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 fashionable, see-and-be-seen, sometimes crowded, oftentimes
                 insufferable neighborhoods of SoHo and NoHo. It Includes
                 everything from art galleries to bakeries to coffee shops to
-                clothing boutiques to bars and restaurants. And while there’s a
-                lot of noise in these two neighborhoods, they are also home to
-                some of the best food and shopping in all of NYC.
+                clothing boutiques to bars and restaurants. And while
+                there&rsquo;s a lot of noise in these two neighborhoods, they
+                are also home to some of the best food and shopping in all of
+                NYC.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
@@ -128,20 +131,20 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   You can find the first guide to the LES right here. There will
                   be many more.
                 </span>
-                I’m the only person writing and gathering these recommendations,
-                so if you do not see a spot (well-known or not) on this list, it
-                might be because I don’t know it. But most likely, it’s because
-                I don’t really like it.
+                I&rsquo;m the only person writing and gathering these
+                recommendations, so if you do not see a spot (well-known or not)
+                on this list, it might be because I don&rsquo;t know it. But
+                most likely, it&rsquo;s because I don&rsquo;t really like it.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                As you may have noticed, this guide is not a design object. It’s
-                a Google Doc. I could have tried harder to make this look cool,
-                but I didn’t. The point is just to give you recommendations as
-                directly as possible. There are some iPhone photos to give added
-                flavor to these recommendations, which are broken down by
-                categories and presented with information I think is important
-                to know about each spot. This is a long list.
+                As you may have noticed, this guide is not a design object.
+                It&rsquo;s a Google Doc. I could have tried harder to make this
+                look cool, but I didn&rsquo;t. The point is just to give you
+                recommendations as directly as possible. There are some iPhone
+                photos to give added flavor to these recommendations, which are
+                broken down by categories and presented with information I think
+                is important to know about each spot. This is a long list.
                 <span className="font-eb text-red-500">
                   More is (allegedly) more.
                 </span>
@@ -149,18 +152,18 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
                 For this installment of Everything Good, I am keeping access
-                free, but I’d love it if you could make a donation to{" "}
+                free, but I&rsquo;d love it if you could make a donation to{" "}
                 <a
                   className="text-red-600"
                   href="https://give.glwd.org/give/244921/?&_ga=2.82856336.720855393.1659365992-1819495194.1658185824&_gac=1.152424907.1659365992.Cj0KCQjw852XBhC6ARIsAJsFPN2ROn8IwnasS4uPZ7g5p2G1i2Dm1jOOEHF6rAXr9556xlUoF4Cy8aMaAjprEALw_wcB#!/donation/checkout?c_src=WS&c_src2=BU"
                 >
-                  God’s Love We Deliver
+                  God&rsquo;s Love We Deliver
                 </a>
                 , an amazing secular charity in SoHo that provides nutritious
                 meals for New Yorkers that are too sick or elderly to cook for
-                themselves. They’ve done fantastic work in NYC since 1985 and
-                have been at home in SoHo since 2015. If you’re using this list,
-                please donate!
+                themselves. They&rsquo;ve done fantastic work in NYC since 1985
+                and have been at home in SoHo since 2015. If you&rsquo;re using
+                this list, please donate!
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
@@ -192,14 +195,15 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
               <p className="text-center font-eb text-lg">
                 OK, OK, OK. First off, when I say NoHo and SoHo, I mean the
-                space outlined in black above, including Hudson Square. I’m not
-                saying you didn't know where these neighborhoods are. But now we
-                definitely 100% all know where they are.
+                space outlined in black above, including Hudson Square.
+                I&rsquo;m not saying you didn't know where these neighborhoods
+                are. But now we definitely 100% all know where they are.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                Also, if you’re like—WAIT, there should be a Google Map with all
-                these spots on it, dude!—do not fear. That map exists at{" "}
+                Also, if you&rsquo;re like—WAIT, there should be a Google Map
+                with all these spots on it, dude!—do not fear. That map exists
+                at{" "}
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -208,9 +212,9 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 >
                   this link right here
                 </a>
-                , so you can have it handy whenever you’re running around living
-                your life. It also includes the spots from previous Everything
-                Good Guides on separate layers.
+                , so you can have it handy whenever you&rsquo;re running around
+                living your life. It also includes the spots from previous
+                Everything Good Guides on separate layers.
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
@@ -222,7 +226,8 @@ const SohoNoho = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               </p>
               <div className="py-3" />
               <p className="text-center font-eb text-lg">
-                Great. Now that we’re all on the same page, let’s get into it…
+                Great. Now that we&rsquo;re all on the same page, let&rsquo;s
+                get into it…
               </p>
             </div>
           </div>
