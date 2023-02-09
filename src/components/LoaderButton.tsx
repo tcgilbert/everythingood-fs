@@ -32,7 +32,7 @@ export const LoaderButton = ({
       className={className}
       onClick={() => {
         setLoading(true);
-        void handleOnClick();
+        handleOnClick();
       }}
     >
       {handleLoader()}

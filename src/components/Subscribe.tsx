@@ -70,21 +70,13 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
       </div>
       <div className="py-1" />
       <LoaderButton
-        handleOnClick={handleSubscribe}
+        handleOnClick={() => void handleSubscribe()}
         className="text-md flex w-full items-center justify-center rounded-md border border-blue-100 bg-blue-100 px-3 py-3 text-center font-medium text-blue-700 transition duration-150 ease-in-out hover:border-blue-700"
         loading={subscribeLoading}
         setLoading={setSubscribeLoading}
       >
         Subscribe
       </LoaderButton>
-      <button
-        className="text-md flex w-full items-center justify-center rounded-md border border-blue-100 bg-blue-100 px-3 py-3 text-center font-medium text-blue-700 transition duration-150 ease-in-out hover:border-blue-700"
-        onClick={() => {
-          void handleSubscribe();
-        }}
-      >
-        Subscribe
-      </button>
       {error && (
         <span className="italic text-red-600">
           Please enter a valid email address
