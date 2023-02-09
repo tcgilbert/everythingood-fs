@@ -2,7 +2,7 @@ import { type Dispatch, type SetStateAction, useState } from "react";
 
 import { EB_Garamond, Roboto_Mono } from "@next/font/google";
 import { api } from "../utils/api";
-
+import { LoaderButton } from "./LoaderButton";
 const ebGaramond = EB_Garamond({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
@@ -14,6 +14,7 @@ interface SubscribeProps {
 export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
   const { mutateAsync: createSubscriber } = api.subscribe.create.useMutation();
 
   const validateEmail = (email: string) => {
@@ -25,6 +26,7 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
   const handleSubscribe = async () => {
     if (!validateEmail(email)) {
       setError(true);
+      setSubscribeLoading(false);
       return;
     }
     try {
@@ -33,10 +35,12 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
       setOpen(false);
       setTimeout(() => {
         setShowNotification(false);
+        setSubscribeLoading(false);
       }, 4000);
       return subscriber;
     } catch (error) {
       console.error(error);
+      setSubscribeLoading(false);
     }
   };
 
@@ -65,9 +69,16 @@ export const Subscribe = ({ setOpen, setShowNotification }: SubscribeProps) => {
         />
       </div>
       <div className="py-1" />
+      <LoaderButton
+        handleOnClick={handleSubscribe}
+        className="text-md flex w-full items-center justify-center rounded-md border border-blue-100 bg-blue-100 px-3 py-3 text-center font-medium text-blue-700 transition duration-150 ease-in-out hover:border-blue-700"
+        loading={subscribeLoading}
+        setLoading={setSubscribeLoading}
+      >
+        Subscribe
+      </LoaderButton>
       <button
-        type="submit"
-        className="w-full rounded-md border bg-red-500 px-3 py-3 text-center font-medium text-white transition duration-150 ease-in-out hover:bg-red-400"
+        className="text-md flex w-full items-center justify-center rounded-md border border-blue-100 bg-blue-100 px-3 py-3 text-center font-medium text-blue-700 transition duration-150 ease-in-out hover:border-blue-700"
         onClick={() => {
           void handleSubscribe();
         }}
