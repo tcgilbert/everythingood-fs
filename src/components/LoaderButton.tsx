@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CgSpinner } from "react-icons/cg";
 
 interface LoadingLinkProps {
