@@ -25,7 +25,7 @@ export const AdminArtGallery = ({ data, refetch }: AdminEntryProps) => {
   const handleDelete = async () => {
     if (deleteSelected) {
       // delete entry
-      await deleteEntry({ id: data.id });
+      await deleteEntry({ id: data.id, guide: data.guide });
       setOpen(false);
       refetch();
       setTimeout(() => {

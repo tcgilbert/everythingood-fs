@@ -26,7 +26,7 @@ export const AdminCafe = ({ data, refetch }: AdminEntryProps) => {
     if (deleteSelected) {
       // delete entry
       console.log("deleting!!!!!!");
-      await deleteEntry({ id: data.id });
+      await deleteEntry({ id: data.id, guide: data.guide });
       setOpen(false);
       refetch();
       setTimeout(() => {

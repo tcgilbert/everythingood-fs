@@ -59,10 +59,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.restaurant.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -71,10 +73,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.bar.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -83,10 +87,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.bakeryAndDessert.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -95,10 +101,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.cafe.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -107,10 +115,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.groceryAndLiquor.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -119,10 +129,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.shop.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -131,10 +143,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.artGallery.update({
         where: { id: input.id },
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -143,9 +157,11 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.restaurant.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
@@ -154,10 +170,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.bar.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
@@ -167,10 +185,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.cafe.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
@@ -180,10 +200,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.shop.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
@@ -195,10 +217,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.bakeryAndDessert.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
@@ -210,10 +234,12 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.groceryAndLiquor.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
@@ -223,88 +249,104 @@ export const guideData = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
 
       await ctx.prisma.artGallery.create({
         data: { ...input },
       });
+      await res.revalidate(`/${input.guide}`);
 
       return { success: true };
     }),
 
   deleteRestaurant: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.restaurant.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteBar: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.bar.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteCafe: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.cafe.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteBakeryAndDessert: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.bakeryAndDessert.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteArtGallery: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.artGallery.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteGroceryAndLiquor: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.groceryAndLiquor.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 
   deleteShop: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.string(), guide: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(input);
       console.log("________________\n");
+      const { res } = ctx;
       await ctx.prisma.shop.delete({
         where: { id: input.id },
       });
+      await res.revalidate(`/${input.guide}`);
       return { success: true };
     }),
 });

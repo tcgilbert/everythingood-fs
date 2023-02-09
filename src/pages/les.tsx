@@ -12,7 +12,6 @@ import { LoaderLink } from "../components/LoaderLink";
 
 export const getStaticProps = async () => {
   const data = await getStaticGuideData("les");
-
   return {
     props: {
       data,
